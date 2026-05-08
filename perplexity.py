@@ -150,17 +150,17 @@ def sample_top_p(logits, top_p=0.95):
     cumulative = torch.cumsum(sorted_probs, dim=-1)
 
     keep = cumulative <= top_p
-    keep[..., 0] = True
+    keep[0] = True
 
     filtered_probs = sorted_probs * keep
     filtered_probs /= filtered_probs.sum()
 
-    sampled = torch.multinomial(filtered_probs, 1)
+    sampled_idx = torch.multinomial(
+        filtered_probs,
+        1
+    )
 
-    return sorted_idx.gather(
-        -1,
-        sampled.unsqueeze(-1)
-    ).squeeze()
+    return sorted_idx[sampled_idx].item()
 
 # ============================================================
 # ITERATIVE INFILLING
@@ -195,7 +195,7 @@ def fill_masks(token_lists):
 
             sampled = sample_top_p(
                 logits[pos]
-            ).item()
+            )
 
             toks[pos] = mask_tok.convert_ids_to_tokens(
                 sampled
