@@ -84,19 +84,27 @@ def strip_code_fences(text: str) -> str:
 
 @torch.inference_mode()
 def generate_batch(prompts: list[str], max_new_tokens: int = 1024) -> list[str]:
-    inputs = tokenizer(prompts, return_tensors="pt", padding=True)
+inputs = tokenizer(prompts, return_tensors="pt", padding=True, return_attention_mask=True)
+inputs = {k: v.to(model.device) for k, v in inputs.items()}
 
-    outputs = model.generate(
-        **inputs,
-        max_new_tokens=max_new_tokens,
-        do_sample=False,
-        pad_token_id=tokenizer.eos_token_id,
-    )
+outputs = model.generate(
+    **inputs,
+    max_new_tokens=max_new_tokens,
+    do_sample=False,
+    pad_token_id=tokenizer.eos_token_id,
+)
 
-    codes = tokenizer.batch_decode(outputs, skip_special_tokens=True)
+    prompt_lengths = inputs["attention_mask"].sum(dim=1)
 
-    return codes
+    codes = [
+        tokenizer.decode(
+            output[prompt_len:],
+            skip_special_tokens=True,
+        )
+        for output, prompt_len in zip(outputs, prompt_lengths)
+    ]
 
+return [strip_code_fences(code) for code in codes]
 
 def run_batch(jobs: list[Job], batch_size: int) -> list[tuple[Job, str]]:
     results: list[tuple[Job, str]] = []
@@ -218,7 +226,9 @@ def build_jobs() -> list[Job]:
 
     for year in YEARS:
         for day in DAYS:
-            problem = read_file(f"problems/{year}/day{day}.txt")
+            part1 = read_file(f"problems/{year}/{day}/part1.txt")
+            part2 = read_file(f"problems/{year}/{day}/part2.txt")
+            problem = "\n\n".join(filter(None, [part1, part2]))
             if not problem:
                 continue
 
@@ -245,3 +255,7 @@ def main() -> None:
         OUTPUT_PATH,
         [create_sample(result) for result in final],
     )
+
+
+if __name__ == "__main__":
+    main()
