@@ -4,6 +4,7 @@ import asyncio
 from typing import TypedDict
 from pathlib import Path
 import json
+import re
 
 from code_validation import validate_code, CodeValidationError
 
@@ -66,15 +67,32 @@ class Job:
         return f"{self.year}-{self.day}-variant{self.variant_index}"
 
 
+def strip_code_fences(text: str) -> str:
+    text = text.strip()
+
+    text = re.sub(r"^```python\s*", "", text)
+    text = re.sub(r"^```\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+
+    return text.strip()
+
+
 def generate_code(prompt: str, max_new_tokens: int = 512) -> str:
     messages = [
         {
             "role": "system",
-            "content": "You are a helpful assistant for code generation.",
+            "content": (
+                "You are a Python code generator.\n"
+                "Output raw Python source code only.\n"
+                "Do NOT use markdown.\n"
+                "Do NOT wrap the code in triple backticks.\n"
+                "Do NOT include explanations.\n"
+                "Do NOT include comments outside the code.\n"
+                "The first character of your response must be valid Python code."
+            ),
         },
         {"role": "user", "content": prompt},
     ]
-
     text = tokenizer.apply_chat_template(
         messages, add_generation_prompt=True, tokenize=False
     )
@@ -167,6 +185,8 @@ async def get_valid_code(prompt: str, max_attempts: int = 3):
             response = generate_code(prompt)
             content = response.strip()
 
+            content = strip_code_fences(content)
+
             validate_code(content)
             return content
 
@@ -257,7 +277,7 @@ async def main() -> None:
     writer = create_jsonl_writer(OUTPUT_PATH)
 
     workers = [
-        asyncio.create_task(worker(f"Worker-{i+1}", writer, job_queue))
+        asyncio.create_task(worker(f"Worker-{i + 1}", writer, job_queue))
         for i in range(CONCURRENCY)
     ]
 
