@@ -1,48 +1,23 @@
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import asyncio
+from typing import TypedDict
+from pathlib import Path
 import json
 import re
-from pathlib import Path
-from typing import Awaitable, Callable, TypedDict
 
-import torch
-from transformers import AutoTokenizer
-from vllm import LLM, SamplingParams
-
-from code_validation import CodeValidationError, validate_code
+from code_validation import validate_code, CodeValidationError
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 MODEL = "Qwen/Qwen2.5-Coder-14B-Instruct"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL,
+    dtype=torch.float16 if DEVICE.type == "cuda" else torch.float32,
+    device_map="auto",
+).eval()
 
-llm = LLM(
-    model=MODEL,
-    dtype="bfloat16",
-    gpu_memory_utilization=0.95,
-)
-
-
-sampling_params = SamplingParams(
-    temperature=0.0,
-    max_tokens=1024,
-    repetition_penalty=1.05,
-)
-
-
-CONCURRENCY = 8
-BATCH_SIZE = 4
-YEARS = [2021, 2024]
-DAYS = range(1, 25)
-VARIANTS_PER_PROBLEM = 3
-
-SYSTEM_PROMPT = (
-    "You are a Python code generator.\n"
-    "Output raw Python code only.\n"
-    "Do not use markdown.\n"
-    "Do not use triple backticks.\n"
-    "Do not include explanations.\n"
-    "Do not include example usage."
-)
 
 VARIANTS = [
     "Write a highly optimized solution focusing on performance.",
@@ -52,6 +27,12 @@ VARIANTS = [
 ]
 
 OUTPUT_PATH = Path("output.jsonl")
+
+
+VARIANTS_PER_PROBLEM = 3
+CONCURRENCY = 1
+YEARS = [2021, 2024]
+DAYS = range(1, 25)
 
 
 class Sample(TypedDict):
@@ -96,25 +77,37 @@ def strip_code_fences(text: str) -> str:
     return text.strip()
 
 
-def generate_code(prompts: list[str]) -> list[str]:
-    formatted_prompts = []
+def generate_code(prompt: str, max_new_tokens: int = 512) -> str:
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a Python code generator.\n"
+                "Output raw Python source code only.\n"
+                "Do NOT use markdown.\n"
+                "Do NOT wrap the code in triple backticks.\n"
+                "Do NOT include explanations.\n"
+                "Do NOT include comments outside the code.\n"
+                "The first character of your response must be valid Python code."
+            ),
+        },
+        {"role": "user", "content": prompt},
+    ]
+    text = tokenizer.apply_chat_template(
+        messages, add_generation_prompt=True, tokenize=False
+    )
 
-    for prompt in prompts:
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt},
-        ]
+    chat_input = tokenizer(text, return_tensors="pt").to(DEVICE)
 
-        text = tokenizer.apply_chat_template(
-            messages,
-            add_generation_prompt=True,
-            tokenize=False,
+    with torch.no_grad():
+        output = model.generate(
+            **chat_input,
+            max_new_tokens=max_new_tokens,
+            do_sample=False,
+            pad_token_id=tokenizer.eos_token_id,
         )
-        formatted_prompts.append(text)
-
-    outputs = llm.generate(formatted_prompts, sampling_params)
-
-    return [output.outputs[0].text.strip() for output in outputs]
+    generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+    return generated_text.split("assistant")[-1].strip()
 
 
 def read_file(path: str):
@@ -185,61 +178,83 @@ def create_sample(year: int, day: int, variant: str, code: str) -> LLMSample:
     )
 
 
-def create_jsonl_writer(path: Path) -> Callable[[LLMSample], Awaitable[None]]:
-    lock = asyncio.Lock()
+async def get_valid_code(prompt: str, max_attempts: int = 3):
+    content: str | None = None
+    for attempt in range(max_attempts):
+        try:
+            response = generate_code(prompt)
+            content = response.strip()
 
-    f = open(path, "a", encoding="utf-8")
+            content = strip_code_fences(content)
+
+            validate_code(content)
+            return content
+
+        except CodeValidationError as e:
+            print(f"Attempt {attempt + 1} failed: {e}. Recieved code:\n{content}\n")
+            if attempt == max_attempts - 1:
+                raise
+
+    raise RuntimeError(
+        "Unreachable: get_valid_code() reached max attempts without returning or raising."
+    )
+
+
+def create_jsonl_writer(path: Path):
+    lock = asyncio.Lock()
 
     async def write(sample: LLMSample):
         line = json.dumps(sample) + "\n"
-
         async with lock:
-            f.write(line)
-            f.flush()
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(line)
 
     return write
 
 
-async def process_batch(writer, jobs: list[Job]):
-    prompts: list[str] = []
-    metadata: list[tuple[Job, str]] = []
+async def process_job(writer, job: Job):
+    folder = f"generation/data/{job.year}/{job.day}"
 
-    for job in jobs:
-        folder = f"generation/data/{job.year}/{job.day}"
-        part1 = read_file(f"{folder}/part1.txt")
-        part2 = read_file(f"{folder}/part2.txt")
+    part1 = read_file(f"{folder}/part1.txt")
+    part2 = read_file(f"{folder}/part2.txt")
 
-        if not part1 or not part2:
-            print(f"Missing problem statement for {job.year} day {job.day}, skipping.")
-            continue
+    if not part1 or not part2:
+        raise RuntimeError(f"Missing problem statement for {job.year} day {job.day}")
 
-        problem = f"{part1}\n{part2}"
-        variant = VARIANTS[job.variant_index]
-        prompt = build_prompt(problem, variant)
+    problem = f"{part1}\n{part2}"
+    variant = VARIANTS[job.variant_index]
+    prompt = build_prompt(problem, variant)
 
-        prompts.append(prompt)
-        metadata.append((job, variant))
+    try:
+        code = await get_valid_code(prompt)
+        sample = create_sample(job.year, job.day, variant, code)
+        await writer(sample)
 
-    generated_codes = generate_code(prompts)
+    except CodeValidationError as e:
+        print(
+            f"Validation failed {job.year} day {job.day} variant {job.variant_index}: {e}"
+        )
+        raise
 
-    for (job, variant), code in zip(metadata, generated_codes):
+
+async def worker(
+    name: str,
+    writer,
+    job_queue: asyncio.Queue[Job],
+):
+    while True:
+        job = await job_queue.get()
+
         try:
-            code = strip_code_fences(code)
-            validate_code(code)
+            print(f"Worker {name} processing {job.id}")
+            await process_job(writer, job)
+            print(f"Worker {name} completed {job.id}")
 
-            sample = create_sample(job.year, job.day, variant, code)
+        except Exception as e:
+            print(f"Worker {name} encountered an error with {job.id}: {e}")
 
-            await writer(sample)
-
-            print(f"Successfully processed {job.id}")
-
-        except CodeValidationError as e:
-            print(f"Validation failed for {job.id} {e}")
-
-
-def chunked(lst: list[Job], size: int):
-    for i in range(0, len(lst), size):
-        yield lst[i : i + size]
+        finally:
+            job_queue.task_done()
 
 
 async def main() -> None:
@@ -255,10 +270,23 @@ async def main() -> None:
         print("No pending jobs to process. Exiting.")
         return
 
+    job_queue: asyncio.Queue[Job] = asyncio.Queue()
+    for job in pending_jobs:
+        await job_queue.put(job)
+
     writer = create_jsonl_writer(OUTPUT_PATH)
 
-    for batch in chunked(pending_jobs, BATCH_SIZE):
-        await process_batch(writer, batch)
+    workers = [
+        asyncio.create_task(worker(f"Worker-{i + 1}", writer, job_queue))
+        for i in range(CONCURRENCY)
+    ]
+
+    await job_queue.join()
+
+    for w in workers:
+        w.cancel()
+
+    await asyncio.gather(*workers, return_exceptions=True)
 
 
 if __name__ == "__main__":
