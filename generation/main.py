@@ -229,10 +229,13 @@ def build_jobs() -> list[Job]:
 
     for year in YEARS:
         for day in DAYS:
-            part1 = read_file(f"problems/{year}/{day}/part1.txt")
-            part2 = read_file(f"problems/{year}/{day}/part2.txt")
+            part1 = read_file(f"data/{year}/{day}/part1.txt")
+            part2 = read_file(f"data/{year}/{day}/part2.txt")
             problem = "\n\n".join(filter(None, [part1, part2]))
             if not problem:
+                print(
+                    f"Warning: No problem statement found for {year} day {day}, skipping."
+                )
                 continue
 
             for i in range(VARIANTS_PER_PROBLEM):
