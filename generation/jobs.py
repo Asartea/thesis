@@ -30,6 +30,9 @@ def build_jobs() -> list[Job]:
         for day in DAYS:
             part1_file = Path(INPUT_DIR) / str(year) / str(day) / "part1.txt"
             part2_file = Path(INPUT_DIR) / str(year) / str(day) / "part2.txt"
+            print(
+                f"Building job for {year} day {day} with inputs {part1_file} and {part2_file}"
+            )
             part1 = read_file(part1_file)
             part2 = read_file(part2_file)
             problem = "\n\n".join(filter(None, [part1, part2]))
