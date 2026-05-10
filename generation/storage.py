@@ -14,7 +14,7 @@ def load_completed_samples(path: Path) -> set[str]:
         for line in f:
             try:
                 sample = json.loads(line)
-                job_id = f"{MODEL}-{sample['year']}-{sample['day']}-{sample['code_variant']}-{sample['style_variant']}"
+                job_id = f"{sample['model']}-{sample['year']}-{sample['day']}-{sample['code_variant']}-{sample['style_variant']}"
                 completed_ids.add(job_id)
             except (json.JSONDecodeError, KeyError):
                 continue
