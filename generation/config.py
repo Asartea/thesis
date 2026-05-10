@@ -2,7 +2,7 @@ from pathlib import Path
 
 import torch
 
-MODEL = "Qwen/Qwen2.5-Coder-14B-Instruct"
+MODEL = "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
