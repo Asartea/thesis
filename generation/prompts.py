@@ -3,17 +3,24 @@ from transformers import AutoTokenizer
 
 def build_prompt(problem: str, code_variant: str, style_variant: str) -> str:
     return f"""
-You are solving an Advent of Code problem using Python.
-Return ONLY valid Python code. You MUST ensure the code is syntactically correct and adheres to the problem requirements.
-You MUST NOT include any explanations, comments, or text outside of the code. The code should be self-contained and executable.
+    You are solving a programming problem.
 
-Additional constraints:
-{code_variant}
-{style_variant}
+    OUTPUT FORMAT:
+    - Output ONLY Python code
+    - No markdown
+    - No explanations
 
-Problem:
-{problem}
-""".strip()
+    BEGIN PROBLEM
+    {problem}
+    END PROBLEM
+
+    BEGIN INSTRUCTIONS
+    {code_variant}
+    {style_variant}
+    END INSTRUCTIONS
+
+    Now write the solution.
+    """.strip()
 
 
 def render_chat_prompt(
