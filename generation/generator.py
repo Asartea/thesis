@@ -12,17 +12,27 @@ model: AutoModelForCausalLM = AutoModelForCausalLM.from_pretrained(
 )
 
 
+device = next(model.parameters()).device
+
+
 @torch.inference_mode()
 def generate_batch(
-    prompts: list[str], max_new_tokens: int = 512, seed: int | None = None
+    prompts: list[str],
+    max_new_tokens: int = 512,
+    seed: int | None = None,
 ) -> list[str]:
     if seed is not None:
         torch.manual_seed(seed)
 
     inputs = tokenizer(
-        prompts, return_tensors="pt", padding=True, return_attention_mask=True
+        prompts,
+        return_tensors="pt",
+        padding=True,
+        truncation=True,
+        return_attention_mask=True,
     )
-    inputs = {k: v.to(model.device) for k, v in inputs.items()}
+
+    inputs = {k: v.to(device) for k, v in inputs.items()}
 
     outputs = model.generate(
         **inputs,
@@ -35,16 +45,24 @@ def generate_batch(
         pad_token_id=tokenizer.eos_token_id,
         eos_token_id=tokenizer.eos_token_id,
     )
+
+    prompt_lengths = inputs["attention_mask"].sum(dim=1)
+
     texts = [
         tokenizer.decode(
-            output[inputs["input_ids"].shape[1] :],
+            output[prompt_length:],
             skip_special_tokens=True,
         )
-        for output in outputs
+        for output, prompt_length in zip(
+            outputs,
+            prompt_lengths,
+            strict=True,
+        )
     ]
 
     del outputs
     del inputs
+
     torch.cuda.empty_cache()
 
     return texts

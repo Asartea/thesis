@@ -7,19 +7,40 @@ from generation.models import Job
 from generation.validation import CodeValidationError, validate_code
 
 
+def generate_prompt_lens(prompts: list[str]) -> list[int]:
+    return [
+        len(tokenizer(prompt, add_special_tokens=False).input_ids) for prompt in prompts
+    ]
+
+
 def run_batch(
     jobs: list[Job], batch_size: int, seed: int | None = None, max_new_tokens: int = 512
 ) -> list[tuple[Job, str]]:
     results: list[tuple[Job, str]] = []
 
-    for i in range(0, len(jobs), batch_size):
-        batch = jobs[i : i + batch_size]
-        prompts = [
-            render_chat_prompt(tokenizer, SYSTEM_PROMPT, job.prompt) for job in batch
-        ]
+    rendered_prompts = [
+        render_chat_prompt(tokenizer, SYSTEM_PROMPT, job.prompt) for job in jobs
+    ]
+    prompt_lengths = generate_prompt_lens(rendered_prompts)
+
+    sorted_jobs = sorted(
+        zip(
+            jobs,
+            rendered_prompts,
+            prompt_lengths,
+            strict=True,
+        ),
+        key=lambda x: x[2],
+    )
+
+    for i in range(0, len(sorted_jobs), batch_size):
+        batch = sorted_jobs[i : i + batch_size]
+        prompts = [item[1] for item in batch]
 
         codes = generate_batch(prompts, max_new_tokens, seed)
-        results.extend((job, code) for job, code in zip(batch, codes, strict=True))
+        for item, code in zip(batch, codes, strict=True):
+            job = item[0]
+            results.append((job, code))
 
     return results
 
