@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=qwen_aoc_generation
+#SBATCH --job-name=deepseek_aoc_generation
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 #SBATCH --gres=gpu:2
-#SBATCH --time=04:00:00
-#SBATCH --mem=10G
+#SBATCH --time=06:00:00
+#SBATCH --mem=15G
 #SBATCH --partition=gpushort
 
 echo "Starting job on $(hostname)"
