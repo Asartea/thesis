@@ -1,5 +1,6 @@
-import bs4
 from pathlib import Path
+
+import bs4
 
 
 def parse_leaderboard_html(html: str, top_users: dict[str, str]) -> None:

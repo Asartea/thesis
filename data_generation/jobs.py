@@ -11,9 +11,9 @@ from data_generation.config import (
     TEST_SAMPLE_SIZE,
     YEARS,
 )
+from data_generation.models import Job
 from data_generation.prompts import build_prompt
 from data_generation.storage import read_file
-from data_generation.models import Job
 
 
 def retry_failed_jobs(failed: list[Job], batch_size: int) -> list[tuple[Job, str]]:

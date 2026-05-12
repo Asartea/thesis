@@ -1,7 +1,7 @@
 from data_generation.config import (
     BATCH_SIZE,
-    OUTPUT_PATH,
     MAX_NEW_TOKENS,
+    OUTPUT_PATH,
 )
 from data_generation.jobs import build_jobs, run_jobs
 from data_generation.storage import (

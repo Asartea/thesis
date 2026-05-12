@@ -2,9 +2,9 @@ import sys
 
 from data_generation.config import SYSTEM_PROMPT
 from data_generation.generator import generate_batch, tokenizer
-from data_generation.prompts import render_chat_prompt
 from data_generation.models import Job
-from validation.validation import validate_code, CodeValidationError
+from data_generation.prompts import render_chat_prompt
+from validation.validation import CodeValidationError, validate_code
 
 
 def generate_prompt_lens(prompts: list[str]) -> list[int]:

@@ -1,8 +1,8 @@
+import re
 from time import sleep
 
-import requests
 import dotenv
-import re
+import requests
 
 from models.models import GitHubRepo
 

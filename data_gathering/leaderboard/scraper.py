@@ -3,8 +3,9 @@ Module for scraping the Advent of Code leaderboards.
 """
 
 import time
-import requests
 from pathlib import Path
+
+import requests
 
 
 def get_year_leaderboard(year: str, base_url: str) -> str:

@@ -1,6 +1,6 @@
-from pathlib import Path
-from collections import defaultdict
 import sys
+from collections import defaultdict
+from pathlib import Path
 
 
 def list_unique_repo_files(root: str):

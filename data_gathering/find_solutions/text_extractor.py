@@ -1,7 +1,8 @@
 from pathlib import Path
 from typing import Optional
 
-from find_solutions.inference import infer_year, infer_day
+from find_solutions.inference import infer_day, infer_year
+
 from models.models import HumanSample
 
 

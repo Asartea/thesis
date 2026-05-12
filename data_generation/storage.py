@@ -1,5 +1,5 @@
-from pathlib import Path
 import json
+from pathlib import Path
 
 from data_generation.config import MODEL
 from data_generation.models import Job

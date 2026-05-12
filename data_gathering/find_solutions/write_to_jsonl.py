@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 from find_solutions.text_extractor import HumanSample
 
 

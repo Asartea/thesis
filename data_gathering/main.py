@@ -2,15 +2,16 @@ import json
 import os
 from pathlib import Path
 
-from leaderboard.scraper import scrape_data
-from leaderboard.parser import extract_top_users
+from find_solutions.filter_solutions import filter_solutions
+from find_solutions.find_solutions_files import find_solution_files
+from find_solutions.text_extractor import HumanSample, build_samples
+from find_solutions.write_to_jsonl import save_jsonl
 from github.find_repos import get_possible_repos_for_user
 from github.find_solutions import clone_repo
-from find_solutions.find_solutions_files import find_solution_files
-from find_solutions.filter_solutions import filter_solutions
-from find_solutions.text_extractor import build_samples, HumanSample
-from find_solutions.write_to_jsonl import save_jsonl
-from validation.validation import validate_code, CodeValidationError
+from leaderboard.parser import extract_top_users
+from leaderboard.scraper import scrape_data
+
+from validation.validation import CodeValidationError, validate_code
 
 
 def write_tsv(top_users: dict[str, str], output_file: Path) -> None:

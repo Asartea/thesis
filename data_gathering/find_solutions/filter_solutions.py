@@ -1,5 +1,5 @@
-from pathlib import Path
 import re
+from pathlib import Path
 
 YEAR_PATTERN = re.compile(
     r"(20\d{2}|aoc[\s_-]?\d{2,4}|adventofcode[\s_-]?\d{2,4})", re.IGNORECASE
