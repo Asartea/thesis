@@ -4,5 +4,11 @@ venv/
 # Python cache
 __pycache__/
 
+# Ruff cache
+.ruff_cache/
+
 # environment variables
 .env
+
+# Human data files
+data-gathering/data/
