@@ -16,6 +16,7 @@ class LLMSample(Sample, total=True):
 
     model: str
     prompt: str
+    use_comp_programming: bool
     code_variant: str
     style_variant: str
 

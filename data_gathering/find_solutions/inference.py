@@ -20,7 +20,9 @@ def infer_day(path: Path | str) -> str | None:
     for part in reversed(p.parts):
         m = DAY_PATTERN.search(part)
         if m:
-            return m.group(1)
+            day = int(m.group(1))
+            if 1 <= day <= 25:
+                return f"{day:02d}"
 
     stem = p.stem
     m = BARE_DAY_PATTERN.match(stem)
