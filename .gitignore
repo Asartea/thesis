@@ -15,3 +15,8 @@ data-gathering/data/
 
 # AoC problems
 data_generation/data/
+
+
+# temp files in root
+*.png
+*.txt
