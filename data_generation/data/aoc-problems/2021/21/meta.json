@@ -1,0 +1,24 @@
+{
+  "date": "2021, puzzle 21",
+  "title": "Dirac Dice",
+  "url": "https://adventofcode.com/2021/day/21",
+  "input": "Player 1 starting position: 4\nPlayer 2 starting position: 9",
+  "part1": {
+    "examples": [
+      {
+        "input": "Player 1 starting position: 4\nPlayer 2 starting position: 8",
+        "answer": "739785"
+      }
+    ],
+    "answer": "903630"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "Player 1 starting position: 4\nPlayer 2 starting position: 8",
+        "answer": "444356092776315"
+      }
+    ],
+    "answer": "303121579983974"
+  }
+}

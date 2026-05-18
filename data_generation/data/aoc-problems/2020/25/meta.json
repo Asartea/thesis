@@ -1,0 +1,19 @@
+{
+  "date": "2020, puzzle 25",
+  "title": "Combo Breaker",
+  "url": "https://adventofcode.com/2020/day/25",
+  "input": "11349501\n5107328",
+  "part1": {
+    "examples": [
+      {
+        "input": "5764801\n17807724",
+        "answer": "14897079"
+      }
+    ],
+    "answer": "7936032"
+  },
+  "part2": {
+    "examples": [],
+    "answer": ""
+  }
+}

@@ -1,0 +1,44 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>Now, you just need to figure out how many <em>orbital transfers</em> you (<code>YOU</code>) need to take to get to Santa (<code>SAN</code>).</p>
+<p>You start at the object <code>YOU</code> are orbiting; your destination is the object <code>SAN</code> is orbiting. An orbital transfer lets you move from any object to an object orbiting or orbited by that object.</p>
+<p>For example, suppose you have the following map:</p>
+<pre><code>COM)B
+B)C
+C)D
+D)E
+E)F
+B)G
+G)H
+D)I
+E)J
+J)K
+K)L
+K)YOU
+I)SAN
+</code></pre>
+<p>Visually, the above map of orbits looks like this:</p>
+<pre><code>                          <em>YOU</em>
+                         <em>/</em>
+        G - H       <em>J - K</em> - L
+       /           <em>/</em>
+COM - B - C - <em>D - E</em> - F
+               <em>\</em>
+                <em>I - SAN</em>
+</code></pre>
+<p>In this example, <code>YOU</code> are in orbit around <code>K</code>, and <code>SAN</code> is in orbit around <code>I</code>. To move from <code>K</code> to <code>I</code>, a minimum of <code>4</code> orbital transfers are required:</p>
+<ul>
+<li><code>K</code> to <code>J</code></li>
+<li><code>J</code> to <code>E</code></li>
+<li><code>E</code> to <code>D</code></li>
+<li><code>D</code> to <code>I</code></li>
+</ul>
+<p>Afterward, the map of orbits looks like this:</p>
+<pre><code>        G - H       J - K - L
+       /           /
+COM - B - C - D - E - F
+               \
+                I - SAN
+                 <em>\</em>
+                  <em>YOU</em>
+</code></pre>
+<p><em>What is the minimum number of orbital transfers required</em> to move from the object <code>YOU</code> are orbiting to the object <code>SAN</code> is orbiting? (Between the objects they are orbiting - <em>not</em> between <code>YOU</code> and <code>SAN</code>.)</p>
+</article>

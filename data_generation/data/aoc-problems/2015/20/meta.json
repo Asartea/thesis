@@ -1,0 +1,14 @@
+{
+  "date": "2015, puzzle 20",
+  "title": "Infinite Elves and Infinite Houses",
+  "url": "https://adventofcode.com/2015/day/20",
+  "input": "33100000",
+  "part1": {
+    "examples": [],
+    "answer": "776160"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "786240"
+  }
+}

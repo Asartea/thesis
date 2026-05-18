@@ -1,0 +1,19 @@
+{
+  "date": "2018, puzzle 19",
+  "title": "Go With The Flow",
+  "url": "https://adventofcode.com/2018/day/19",
+  "input": "#ip 1\naddi 1 16 1\nseti 1 4 5\nseti 1 4 2\nmulr 5 2 4\neqrr 4 3 4\naddr 4 1 1\naddi 1 1 1\naddr 5 0 0\naddi 2 1 2\ngtrr 2 3 4\naddr 1 4 1\nseti 2 6 1\naddi 5 1 5\ngtrr 5 3 4\naddr 4 1 1\nseti 1 7 1\nmulr 1 1 1\naddi 3 2 3\nmulr 3 3 3\nmulr 1 3 3\nmuli 3 11 3\naddi 4 3 4\nmulr 4 1 4\naddi 4 18 4\naddr 3 4 3\naddr 1 0 1\nseti 0 7 1\nsetr 1 4 4\nmulr 4 1 4\naddr 1 4 4\nmulr 1 4 4\nmuli 4 14 4\nmulr 4 1 4\naddr 3 4 3\nseti 0 0 0\nseti 0 1 1",
+  "part1": {
+    "examples": [
+      {
+        "input": "#ip 0\nseti 5 0 1\nseti 6 0 2\naddi 0 1 0\naddr 1 2 3\nsetr 1 0 0\nseti 8 0 4\nseti 9 0 5",
+        "answer": "7"
+      }
+    ],
+    "answer": "2160"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "25945920"
+  }
+}

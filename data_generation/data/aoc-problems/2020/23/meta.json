@@ -1,0 +1,24 @@
+{
+  "date": "2020, puzzle 23",
+  "title": "Crab Cups",
+  "url": "https://adventofcode.com/2020/day/23",
+  "input": "389547612",
+  "part1": {
+    "examples": [
+      {
+        "input": "389125467",
+        "answer": "67384529"
+      }
+    ],
+    "answer": "45286397"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "389125467",
+        "answer": "149245887792"
+      }
+    ],
+    "answer": "836763710"
+  }
+}

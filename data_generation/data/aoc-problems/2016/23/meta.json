@@ -1,0 +1,19 @@
+{
+  "date": "2016, puzzle 23",
+  "title": "Safe Cracking",
+  "url": "https://adventofcode.com/2016/day/23",
+  "input": "cpy a b\ndec b\ncpy a d\ncpy 0 a\ncpy b c\ninc a\ndec c\njnz c -2\ndec d\njnz d -5\ndec b\ncpy b c\ncpy c d\ndec d\ninc c\njnz d -2\ntgl c\ncpy -16 c\njnz 1 c\ncpy 77 c\njnz 73 d\ninc a\ninc d\njnz d -2\ninc c\njnz c -5",
+  "part1": {
+    "examples": [
+      {
+        "input": "cpy 2 a\ntgl a\ntgl a\ntgl a\ncpy 1 a\ndec a\ndec a",
+        "answer": "3"
+      }
+    ],
+    "answer": "10661"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "479007221"
+  }
+}

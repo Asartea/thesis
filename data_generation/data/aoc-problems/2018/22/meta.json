@@ -1,0 +1,24 @@
+{
+  "date": "2018, puzzle 22",
+  "title": "Mode Maze",
+  "url": "https://adventofcode.com/2018/day/22",
+  "input": "depth: 11109\ntarget: 9,731",
+  "part1": {
+    "examples": [
+      {
+        "input": "depth: 510\ntarget: 10,10",
+        "answer": "114"
+      }
+    ],
+    "answer": "7299"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "depth: 510\ntarget: 10,10",
+        "answer": "45"
+      }
+    ],
+    "answer": "1008"
+  }
+}

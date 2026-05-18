@@ -1,0 +1,41 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>Now that you know what the best paths look like, you can figure out the best spot to sit.</p>
+<p>Every non-wall tile (<code>S</code>, <code>.</code>, or <code>E</code>) is equipped with places to sit along the edges of the tile. While determining which of these tiles would be the best spot to sit depends on a whole bunch of factors (how comfortable the seats are, how far away the bathrooms are, whether there's a pillar blocking your view, etc.), the most important factor is <em>whether the tile is on one of the best paths through the maze</em>. If you sit somewhere else, you'd miss all the action!</p>
+<p>So, you'll need to determine which tiles are part of <em>any</em> best path through the maze, including the <code>S</code> and <code>E</code> tiles.</p>
+<p>In the first example, there are <code><em>45</em></code> tiles (marked <code>O</code>) that are part of at least one of the various best paths through the maze:</p>
+<pre><code>###############
+#.......#....<em>O</em>#
+#.#.###.#.###<em>O</em>#
+#.....#.#...#<em>O</em>#
+#.###.#####.#<em>O</em>#
+#.#.#.......#<em>O</em>#
+#.#.#####.###<em>O</em>#
+#..<em>O</em><em>O</em><em>O</em><em>O</em><em>O</em><em>O</em><em>O</em><em>O</em><em>O</em>#<em>O</em>#
+###<em>O</em>#<em>O</em>#####<em>O</em>#<em>O</em>#
+#<em>O</em><em>O</em><em>O</em>#<em>O</em>....#<em>O</em>#<em>O</em>#
+#<em>O</em>#<em>O</em>#<em>O</em>###.#<em>O</em>#<em>O</em>#
+#<em>O</em><em>O</em><em>O</em><em>O</em><em>O</em>#...#<em>O</em>#<em>O</em>#
+#<em>O</em>###.#.#.#<em>O</em>#<em>O</em>#
+#<em>O</em>..#.....#<em>O</em><em>O</em><em>O</em>#
+###############
+</code></pre>
+<p>In the second example, there are <code><em>64</em></code> tiles that are part of at least one of the best paths:</p>
+<pre><code>#################
+#...#...#...#..<em>O</em>#
+#.#.#.#.#.#.#.#<em>O</em>#
+#.#.#.#...#...#<em>O</em>#
+#.#.#.#.###.#.#<em>O</em>#
+#<em>O</em><em>O</em><em>O</em>#.#.#.....#<em>O</em>#
+#<em>O</em>#<em>O</em>#.#.#.#####<em>O</em>#
+#<em>O</em>#<em>O</em>..#.#.#<em>O</em><em>O</em><em>O</em><em>O</em><em>O</em>#
+#<em>O</em>#<em>O</em>#####.#<em>O</em>###<em>O</em>#
+#<em>O</em>#<em>O</em>#..<em>O</em><em>O</em><em>O</em><em>O</em><em>O</em>#<em>O</em><em>O</em><em>O</em>#
+#<em>O</em>#<em>O</em>###<em>O</em>#####<em>O</em>###
+#<em>O</em>#<em>O</em>#<em>O</em><em>O</em><em>O</em>#..<em>O</em><em>O</em><em>O</em>#.#
+#<em>O</em>#<em>O</em>#<em>O</em>#####<em>O</em>###.#
+#<em>O</em>#<em>O</em>#<em>O</em><em>O</em><em>O</em><em>O</em><em>O</em><em>O</em><em>O</em>..#.#
+#<em>O</em>#<em>O</em>#<em>O</em>#########.#
+#<em>O</em>#<em>O</em><em>O</em><em>O</em>..........#
+#################
+</code></pre>
+<p>Analyze your map further. <em>How many tiles are part of at least one of the best paths through the maze?</em></p>
+</article>

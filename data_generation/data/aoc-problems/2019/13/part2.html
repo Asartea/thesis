@@ -1,0 +1,10 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>The game didn't run because you didn't put in any quarters. Unfortunately, you did not bring any <span title="You do have crew quarters, but they won't fit in the machine.">quarters</span>. Memory address <code>0</code> represents the number of quarters that have been inserted; set it to <code>2</code> to play for free.</p>
+<p>The arcade cabinet has a <a href="https://en.wikipedia.org/wiki/Joystick">joystick</a> that can move left and right.  The software reads the position of the joystick with input instructions:</p>
+<ul>
+<li>If the joystick is in the <em>neutral position</em>, provide <code>0</code>.</li>
+<li>If the joystick is <em>tilted to the left</em>, provide <code>-1</code>.</li>
+<li>If the joystick is <em>tilted to the right</em>, provide <code>1</code>.</li>
+</ul>
+<p>The arcade cabinet also has a <a href="https://en.wikipedia.org/wiki/Display_device#Segment_displays">segment display</a> capable of showing a single number that represents the player's current score. When three output instructions specify <code>X=-1, Y=0</code>, the third output instruction is not a tile; the value instead specifies the new score to show in the segment display.  For example, a sequence of output values like <code>-1,0,12345</code> would show <code>12345</code> as the player's current score.</p>
+<p>Beat the game by breaking all the blocks. <em>What is your score after the last block is broken?</em></p>
+</article>

@@ -1,0 +1,14 @@
+{
+  "date": "2019, puzzle 22",
+  "title": "Slam Shuffle",
+  "url": "https://adventofcode.com/2019/day/22",
+  "input": "deal with increment 55\ncut -6984\ndeal into new stack\ncut -2833\ndeal with increment 75\ncut 2488\ndeal with increment 54\ncut 9056\ndeal with increment 52\ncut -2717\ndeal with increment 4\ndeal into new stack\ncut -852\ndeal with increment 21\ncut -3041\ndeal with increment 38\ncut -6871\ndeal into new stack\ndeal with increment 32\ncut 988\ndeal with increment 29\ndeal into new stack\ndeal with increment 68\ncut 5695\ndeal with increment 36\ncut -27\ndeal with increment 33\ndeal into new stack\ncut -1306\ndeal with increment 30\ncut -4033\ndeal with increment 28\ncut -442\ndeal into new stack\ndeal with increment 30\ncut -6295\ndeal with increment 56\ncut -4065\ndeal into new stack\ncut 5275\ndeal with increment 64\ncut 9747\ndeal into new stack\ndeal with increment 63\ncut -3772\ndeal with increment 61\ndeal into new stack\ncut 1021\ndeal with increment 73\ndeal into new stack\ndeal with increment 7\ncut -1232\ndeal with increment 52\ncut -3439\ndeal with increment 31\ncut 1128\ndeal into new stack\ndeal with increment 55\ndeal into new stack\ndeal with increment 39\ncut -3424\ndeal with increment 11\ndeal into new stack\ncut 4139\ndeal with increment 15\ndeal into new stack\ncut 5333\ndeal with increment 16\ncut -6787\ndeal with increment 39\ncut -5817\ndeal into new stack\ndeal with increment 62\ncut -2704\ndeal with increment 64\ndeal into new stack\ndeal with increment 70\ncut 3436\ndeal with increment 65\ncut -8686\ndeal with increment 22\ncut -6190\ndeal with increment 13\ncut -100\ndeal into new stack\ncut -619\ndeal into new stack\ncut 3079\ndeal with increment 53\ncut 1725\ndeal with increment 19\ncut 3440\ndeal with increment 64\ncut 8578\ndeal with increment 5\ncut 2341\ndeal with increment 45\ncut 2217\ndeal with increment 13\ndeal into new stack",
+  "part1": {
+    "examples": [],
+    "answer": "1234"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "7757787935983"
+  }
+}

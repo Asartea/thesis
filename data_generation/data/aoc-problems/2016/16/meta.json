@@ -1,0 +1,23 @@
+{
+  "date": "2016, puzzle 16",
+  "title": "Dragon Checksum",
+  "url": "https://adventofcode.com/2016/day/16",
+  "input": "11101000110010100",
+  "part1": {
+    "examples": [
+      {
+        "input": "110010110100",
+        "answer": "100"
+      },
+      {
+        "input": "10000",
+        "answer": "01100"
+      }
+    ],
+    "answer": "10100101010101101"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "01100001101101001"
+  }
+}

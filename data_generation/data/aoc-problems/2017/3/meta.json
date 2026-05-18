@@ -1,0 +1,31 @@
+{
+  "date": "2017, puzzle 03",
+  "title": "Spiral Memory",
+  "url": "https://adventofcode.com/2017/day/3",
+  "input": "347991",
+  "part1": {
+    "examples": [
+      {
+        "input": "1",
+        "answer": "0"
+      },
+      {
+        "input": "12",
+        "answer": "3"
+      },
+      {
+        "input": "23",
+        "answer": "2"
+      },
+      {
+        "input": "1024",
+        "answer": "31"
+      }
+    ],
+    "answer": "480"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "349975"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2024, puzzle 11",
+  "title": "Plutonian Pebbles",
+  "url": "https://adventofcode.com/2024/day/11",
+  "input": "4189 413 82070 61 655813 7478611 0 8",
+  "part1": {
+    "examples": [
+      {
+        "input": "125 17",
+        "answer": "55312"
+      }
+    ],
+    "answer": "186203"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "221291560078593"
+  }
+}

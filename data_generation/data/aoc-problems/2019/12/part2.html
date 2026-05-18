@@ -1,0 +1,36 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>All this drifting around in space makes you wonder about the nature of the universe.  Does history really repeat itself?  You're curious whether the moons will ever return to a previous state.</p>
+<p>Determine <em>the number of steps</em> that must occur before all of the moons' <em>positions and velocities</em> exactly match a previous point in time.</p>
+<p>For example, the first example above takes <code>2772</code> steps before they exactly match a previous point in time; it eventually returns to the initial state:</p>
+<pre><code>After 0 steps:
+pos=&lt;x= -1, y=  0, z=  2&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+pos=&lt;x=  2, y=-10, z= -7&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+pos=&lt;x=  4, y= -8, z=  8&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+pos=&lt;x=  3, y=  5, z= -1&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+
+After 2770 steps:
+pos=&lt;x=  2, y= -1, z=  1&gt;, vel=&lt;x= -3, y=  2, z=  2&gt;
+pos=&lt;x=  3, y= -7, z= -4&gt;, vel=&lt;x=  2, y= -5, z= -6&gt;
+pos=&lt;x=  1, y= -7, z=  5&gt;, vel=&lt;x=  0, y= -3, z=  6&gt;
+pos=&lt;x=  2, y=  2, z=  0&gt;, vel=&lt;x=  1, y=  6, z= -2&gt;
+
+After 2771 steps:
+pos=&lt;x= -1, y=  0, z=  2&gt;, vel=&lt;x= -3, y=  1, z=  1&gt;
+pos=&lt;x=  2, y=-10, z= -7&gt;, vel=&lt;x= -1, y= -3, z= -3&gt;
+pos=&lt;x=  4, y= -8, z=  8&gt;, vel=&lt;x=  3, y= -1, z=  3&gt;
+pos=&lt;x=  3, y=  5, z= -1&gt;, vel=&lt;x=  1, y=  3, z= -1&gt;
+
+After 2772 steps:
+pos=&lt;x= -1, y=  0, z=  2&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+pos=&lt;x=  2, y=-10, z= -7&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+pos=&lt;x=  4, y= -8, z=  8&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+pos=&lt;x=  3, y=  5, z= -1&gt;, vel=&lt;x=  0, y=  0, z=  0&gt;
+</code></pre>
+<p>Of course, the universe might last for a <em>very long time</em> before repeating.  Here's a copy of the second example from above:</p>
+<pre><code>&lt;x=-8, y=-10, z=0&gt;
+&lt;x=5, y=5, z=10&gt;
+&lt;x=2, y=-7, z=3&gt;
+&lt;x=9, y=-8, z=-3&gt;
+</code></pre>
+<p>This set of initial positions takes <code>4686774924</code> steps before it repeats a previous state! Clearly, you might need to <em>find a more efficient way to simulate the universe</em>.</p>
+<p><em>How many steps does it take</em> to reach the first state that exactly matches a previous state?</p>
+</article>

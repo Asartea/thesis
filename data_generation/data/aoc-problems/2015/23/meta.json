@@ -1,0 +1,24 @@
+{
+  "date": "2015, puzzle 23",
+  "title": "Opening the Turing Lock",
+  "url": "https://adventofcode.com/2015/day/23",
+  "input": "jio a, +19\ninc a\ntpl a\ninc a\ntpl a\ninc a\ntpl a\ntpl a\ninc a\ninc a\ntpl a\ntpl a\ninc a\ninc a\ntpl a\ninc a\ninc a\ntpl a\njmp +23\ntpl a\ntpl a\ninc a\ninc a\ntpl a\ninc a\ninc a\ntpl a\ninc a\ntpl a\ninc a\ntpl a\ninc a\ntpl a\ninc a\ninc a\ntpl a\ninc a\ninc a\ntpl a\ntpl a\ninc a\njio a, +8\ninc b\njie a, +4\ntpl a\ninc a\njmp +2\nhlf a\njmp -7",
+  "part1": {
+    "examples": [
+      {
+        "input": "inc a\njio a, +2\ntpl a\ninc a",
+        "answer": "0"
+      }
+    ],
+    "answer": "184"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "inc a\njio a, +2\ntpl a\ninc a",
+        "answer": "0"
+      }
+    ],
+    "answer": "231"
+  }
+}

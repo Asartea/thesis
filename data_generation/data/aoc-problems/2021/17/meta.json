@@ -1,0 +1,24 @@
+{
+  "date": "2021, puzzle 17",
+  "title": "Trick Shot",
+  "url": "https://adventofcode.com/2021/day/17",
+  "input": "target area: x=236..262, y=-78..-58",
+  "part1": {
+    "examples": [
+      {
+        "input": "target area: x=20..30, y=-10..-5",
+        "answer": "45"
+      }
+    ],
+    "answer": "3003"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "target area: x=20..30, y=-10..-5",
+        "answer": "112"
+      }
+    ],
+    "answer": "940"
+  }
+}

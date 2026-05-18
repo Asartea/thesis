@@ -1,0 +1,55 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>Once you give them the coordinates, the Elves quickly deploy an Instant Monitoring Station to the location and discover <span title="The Elves on Ceres just have a unique system of values, that's all.">the worst</span>: there are simply too many asteroids.</p>
+<p>The only solution is <em>complete vaporization by giant laser</em>.</p>
+<p>Fortunately, in addition to an asteroid scanner, the new monitoring station also comes equipped with a giant rotating laser perfect for vaporizing asteroids. The laser starts by pointing <em>up</em> and always rotates <em>clockwise</em>, vaporizing any asteroid it hits.</p>
+<p>If multiple asteroids are <em>exactly</em> in line with the station, the laser only has enough power to vaporize <em>one</em> of them before continuing its rotation. In other words, the same asteroids that can be <em>detected</em> can be vaporized, but if vaporizing one asteroid makes another one detectable, the newly-detected asteroid won't be vaporized until the laser has returned to the same position by rotating a full 360 degrees.</p>
+<p>For example, consider the following map, where the asteroid with the new monitoring station (and laser) is marked <code>X</code>:</p>
+<pre><code>.#....#####...#..
+##...##.#####..##
+##...#...#.#####.
+..#.....X...###..
+..#.#.....#....##
+</code></pre>
+<p>The first nine asteroids to get vaporized, in order, would be:</p>
+<pre><code>.#....###<em>2</em><em>4</em>...#..
+##...##.<em>1</em><em>3</em>#<em>6</em><em>7</em>..<em>9</em>#
+##...#...<em>5</em>.<em>8</em>####.
+..#.....X...###..
+..#.#.....#....##
+</code></pre>
+<p>Note that some asteroids (the ones behind the asteroids marked <code>1</code>, <code>5</code>, and <code>7</code>) won't have a chance to be vaporized until the next full rotation.  The laser continues rotating; the next nine to be vaporized are:</p>
+<pre><code>.#....###.....#..
+##...##...#.....#
+##...#......<em>1</em><em>2</em><em>3</em><em>4</em>.
+..#.....X...<em>5</em>##..
+..#.<em>9</em>.....<em>8</em>....<em>7</em><em>6</em>
+</code></pre>
+<p>The next nine to be vaporized are then:</p>
+<pre><code>.<em>8</em>....###.....#..
+<em>5</em><em>6</em>...<em>9</em>#...#.....#
+<em>3</em><em>4</em>...<em>7</em>...........
+..<em>2</em>.....X....##..
+..<em>1</em>..............
+</code></pre>
+<p>Finally, the laser completes its first full rotation (<code>1</code> through <code>3</code>), a second rotation (<code>4</code> through <code>8</code>), and vaporizes the last asteroid (<code>9</code>) partway through its third rotation:</p>
+<pre><code>......<em>2</em><em>3</em><em>4</em>.....<em>6</em>..
+......<em>1</em>...<em>5</em>.....<em>7</em>
+.................
+........X....<em>8</em><em>9</em>..
+.................
+</code></pre>
+<p>In the large example above (the one with the best monitoring station location at <code>11,13</code>):</p>
+<ul>
+<li>The 1st asteroid to be vaporized is at <code>11,12</code>.</li>
+<li>The 2nd asteroid to be vaporized is at <code>12,1</code>.</li>
+<li>The 3rd asteroid to be vaporized is at <code>12,2</code>.</li>
+<li>The 10th asteroid to be vaporized is at <code>12,8</code>.</li>
+<li>The 20th asteroid to be vaporized is at <code>16,0</code>.</li>
+<li>The 50th asteroid to be vaporized is at <code>16,9</code>.</li>
+<li>The 100th asteroid to be vaporized is at <code>10,16</code>.</li>
+<li>The 199th asteroid to be vaporized is at <code>9,6</code>.</li>
+<li><em>The 200th asteroid to be vaporized is at <code>8,2</code>.</em></li>
+<li>The 201st asteroid to be vaporized is at <code>10,9</code>.</li>
+<li>The 299th and final asteroid to be vaporized is at <code>11,1</code>.</li>
+</ul>
+<p>The Elves are placing bets on which will be the <em>200th</em> asteroid to be vaporized.  Win the bet by determining which asteroid that will be; <em>what do you get if you multiply its X coordinate by <code>100</code> and then add its Y coordinate?</em> (For example, <code>8,2</code> becomes <em><code>802</code></em>.)</p>
+</article>

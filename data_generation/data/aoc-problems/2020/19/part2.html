@@ -1,0 +1,74 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>As you look over the list of messages, you realize your matching rules aren't quite right. To fix them, completely replace rules <code>8: 42</code> and <code>11: 42 31</code> with the following:</p>
+<pre><code>8: 42 | 42 8
+11: 42 31 | 42 11 31
+</code></pre>
+<p>This small change has a big impact: now, the rules <em>do</em> contain loops, and the list of messages they could hypothetically match is infinite. You'll need to determine how these changes affect which messages are valid.</p>
+<p>Fortunately, many of the rules are unaffected by this change; it might help to start by looking at which rules always match the same set of values and how <em>those</em> rules (especially rules <code>42</code> and <code>31</code>) are used by the new versions of rules <code>8</code> and <code>11</code>.</p>
+<p>(Remember, <em>you only need to handle the rules you have</em>; building a solution that could handle any hypothetical combination of rules would be <a href="https://en.wikipedia.org/wiki/Formal_grammar" target="_blank">significantly more difficult</a>.)</p>
+<p>For example:</p>
+<pre><code>42: 9 14 | 10 1
+9: 14 27 | 1 26
+10: 23 14 | 28 1
+1: "a"
+11: 42 31
+5: 1 14 | 15 1
+19: 14 1 | 14 14
+12: 24 14 | 19 1
+16: 15 1 | 14 14
+31: 14 17 | 1 13
+6: 14 14 | 1 14
+2: 1 24 | 14 4
+0: 8 11
+13: 14 3 | 1 12
+15: 1 | 14
+17: 14 2 | 1 7
+23: 25 1 | 22 14
+28: 16 1
+4: 1 1
+20: 14 14 | 1 15
+3: 5 14 | 16 1
+27: 1 6 | 14 18
+14: "b"
+21: 14 1 | 1 14
+25: 1 1 | 1 14
+22: 14 14
+8: 42
+26: 14 22 | 1 20
+18: 15 15
+7: 14 5 | 1 21
+24: 14 1
+
+abbbbbabbbaaaababbaabbbbabababbbabbbbbbabaaaa
+bbabbbbaabaabba
+babbbbaabbbbbabbbbbbaabaaabaaa
+aaabbbbbbaaaabaababaabababbabaaabbababababaaa
+bbbbbbbaaaabbbbaaabbabaaa
+bbbababbbbaaaaaaaabbababaaababaabab
+ababaaaaaabaaab
+ababaaaaabbbaba
+baabbaaaabbaaaababbaababb
+abbbbabbbbaaaababbbbbbaaaababb
+aaaaabbaabaaaaababaa
+aaaabbaaaabbaaa
+aaaabbaabbaaaaaaabbbabbbaaabbaabaaa
+babaaabbbaaabaababbaabababaaab
+aabbbbbaabbbaaaaaabbbbbababaaaaabbaaabba
+</code></pre>
+<p>Without updating rules <code>8</code> and <code>11</code>, these rules only match three messages: <code>bbabbbbaabaabba</code>, <code>ababaaaaaabaaab</code>, and <code>ababaaaaabbbaba</code>.</p>
+<p>However, after updating rules <code>8</code> and <code>11</code>, a total of <em><code>12</code></em> messages match:</p>
+<ul>
+<li><code>bbabbbbaabaabba</code></li>
+<li><code>babbbbaabbbbbabbbbbbaabaaabaaa</code></li>
+<li><code>aaabbbbbbaaaabaababaabababbabaaabbababababaaa</code></li>
+<li><code>bbbbbbbaaaabbbbaaabbabaaa</code></li>
+<li><code>bbbababbbbaaaaaaaabbababaaababaabab</code></li>
+<li><code>ababaaaaaabaaab</code></li>
+<li><code>ababaaaaabbbaba</code></li>
+<li><code>baabbaaaabbaaaababbaababb</code></li>
+<li><code>abbbbabbbbaaaababbbbbbaaaababb</code></li>
+<li><code>aaaaabbaabaaaaababaa</code></li>
+<li><code>aaaabbaabbaaaaaaabbbabbbaaabbaabaaa</code></li>
+<li><code>aabbbbbaabbbaaaaaabbbbbababaaaaabbaaabba</code></li>
+</ul>
+<p><em>After updating rules <code>8</code> and <code>11</code>, how many messages completely match rule <code>0</code>?</em></p>
+</article>

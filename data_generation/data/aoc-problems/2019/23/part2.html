@@ -1,0 +1,6 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>Packets sent to address <code>255</code> are handled by a device called a NAT (Not Always Transmitting). The NAT is responsible for managing power consumption of the network by blocking certain packets and watching for idle periods in the computers.</p>
+<p>If a packet would be sent to address <code>255</code>, the NAT receives it instead.  The NAT remembers only the <em>last</em> packet it receives; that is, the data in each packet it receives overwrites the NAT's packet memory with the new packet's <code>X</code> and <code>Y</code> values.</p>
+<p>The NAT also monitors all computers on the network.  If all computers have <em>empty incoming packet queues</em> and are <em>continuously trying to receive packets</em> without sending packets, the network is considered <em>idle</em>.</p>
+<p>Once the network is idle, the NAT sends <em>only the last packet it received</em> to address <code>0</code>; this will cause the computers on the network to resume activity.  In this way, the NAT can throttle power consumption of the network when the ship needs power in other areas.</p>
+<p>Monitor packets released to the computer at address <code>0</code> by the NAT.  <em>What is the first <code>Y</code> value delivered by the NAT to the computer at address <code>0</code> twice in a row?</em></p>
+</article>

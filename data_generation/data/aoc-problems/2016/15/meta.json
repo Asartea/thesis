@@ -1,0 +1,19 @@
+{
+  "date": "2016, puzzle 15",
+  "title": "Timing is Everything",
+  "url": "https://adventofcode.com/2016/day/15",
+  "input": "Disc #1 has 17 positions; at time=0, it is at position 1.\nDisc #2 has 7 positions; at time=0, it is at position 0.\nDisc #3 has 19 positions; at time=0, it is at position 2.\nDisc #4 has 5 positions; at time=0, it is at position 0.\nDisc #5 has 3 positions; at time=0, it is at position 0.\nDisc #6 has 13 positions; at time=0, it is at position 5.",
+  "part1": {
+    "examples": [
+      {
+        "input": "Disc #1 has 5 positions; at time=0, it is at position 4.\nDisc #2 has 2 positions; at time=0, it is at position 1.",
+        "answer": "5"
+      }
+    ],
+    "answer": "317371"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "2080951"
+  }
+}

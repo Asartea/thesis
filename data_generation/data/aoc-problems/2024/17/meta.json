@@ -1,0 +1,24 @@
+{
+  "date": "2024, puzzle 17",
+  "title": "Chronospatial Computer",
+  "url": "https://adventofcode.com/2024/day/17",
+  "input": "Register A: 59590048\nRegister B: 0\nRegister C: 0\n\nProgram: 2,4,1,5,7,5,0,3,1,6,4,3,5,5,3,0",
+  "part1": {
+    "examples": [
+      {
+        "input": "Register A: 729\nRegister B: 0\nRegister C: 0\n\nProgram: 0,1,5,4,3,0",
+        "answer": "4,6,3,5,6,3,5,2,1,0"
+      }
+    ],
+    "answer": "6,5,7,4,5,7,3,1,0"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "Register A: 2024\nRegister B: 0\nRegister C: 0\n\nProgram: 0,3,5,4,3,0",
+        "answer": "117440"
+      }
+    ],
+    "answer": "105875099912602"
+  }
+}

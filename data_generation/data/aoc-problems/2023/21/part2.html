@@ -1,0 +1,51 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>The Elf seems confused by your answer until he realizes his mistake: he was reading from a <span title="Next up: 729.">list</span> of his favorite numbers that are both perfect squares and perfect cubes, not his step counter.</p>
+<p>The <em>actual</em> number of steps he needs to get today is exactly <code><em>26501365</em></code>.</p>
+<p>He also points out that the garden plots and rocks are set up so that the map <em>repeats infinitely</em> in every direction.</p>
+<p>So, if you were to look one additional map-width or map-height out from the edge of the example map above, you would find that it keeps repeating:</p>
+<pre><code>.................................
+.....###.#......###.#......###.#.
+.###.##..#..###.##..#..###.##..#.
+..#.#...#....#.#...#....#.#...#..
+....#.#........#.#........#.#....
+.##...####..##...####..##...####.
+.##..#...#..##..#...#..##..#...#.
+.......##.........##.........##..
+.##.#.####..##.#.####..##.#.####.
+.##..##.##..##..##.##..##..##.##.
+.................................
+.................................
+.....###.#......###.#......###.#.
+.###.##..#..###.##..#..###.##..#.
+..#.#...#....#.#...#....#.#...#..
+....#.#........#.#........#.#....
+.##...####..##..S####..##...####.
+.##..#...#..##..#...#..##..#...#.
+.......##.........##.........##..
+.##.#.####..##.#.####..##.#.####.
+.##..##.##..##..##.##..##..##.##.
+.................................
+.................................
+.....###.#......###.#......###.#.
+.###.##..#..###.##..#..###.##..#.
+..#.#...#....#.#...#....#.#...#..
+....#.#........#.#........#.#....
+.##...####..##...####..##...####.
+.##..#...#..##..#...#..##..#...#.
+.......##.........##.........##..
+.##.#.####..##.#.####..##.#.####.
+.##..##.##..##..##.##..##..##.##.
+.................................
+</code></pre>
+<p>This is just a tiny three-map-by-three-map slice of the inexplicably-infinite farm layout; garden plots and rocks repeat as far as you can see. The Elf still starts on the one middle tile marked <code>S</code>, though - every other repeated <code>S</code> is replaced with a normal garden plot (<code>.</code>).</p>
+<p>Here are the number of reachable garden plots in this new infinite version of the example map for different numbers of steps:</p>
+<ul>
+<li>In exactly <code>6</code> steps, he can still reach <code><em>16</em></code> garden plots.</li>
+<li>In exactly <code>10</code> steps, he can reach any of <code><em>50</em></code> garden plots.</li>
+<li>In exactly <code>50</code> steps, he can reach <code><em>1594</em></code> garden plots.</li>
+<li>In exactly <code>100</code> steps, he can reach <code><em>6536</em></code> garden plots.</li>
+<li>In exactly <code>500</code> steps, he can reach <code><em>167004</em></code> garden plots.</li>
+<li>In exactly <code>1000</code> steps, he can reach <code><em>668697</em></code> garden plots.</li>
+<li>In exactly <code>5000</code> steps, he can reach <code><em>16733044</em></code> garden plots.</li>
+</ul>
+<p>However, the step count the Elf needs is much larger! Starting from the garden plot marked <code>S</code> on your infinite map, <em>how many garden plots could the Elf reach in exactly <code>26501365</code> steps?</em></p>
+</article>

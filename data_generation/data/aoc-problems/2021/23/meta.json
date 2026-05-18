@@ -1,0 +1,24 @@
+{
+  "date": "2021, puzzle 23",
+  "title": "Amphipod",
+  "url": "https://adventofcode.com/2021/day/23",
+  "input": "#############\n#...........#\n###A#D#A#B###\n  #B#C#D#C#\n  #########",
+  "part1": {
+    "examples": [
+      {
+        "input": "#############\n#...........#\n###B#C#B#D###\n  #A#D#C#A#\n  #########",
+        "answer": "12521"
+      }
+    ],
+    "answer": "13455"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "#############\n#...........#\n###B#C#B#D###\n  #A#D#C#A#\n  #########",
+        "answer": "44169"
+      }
+    ],
+    "answer": "43567"
+  }
+}

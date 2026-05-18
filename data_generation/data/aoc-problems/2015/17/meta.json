@@ -1,0 +1,24 @@
+{
+  "date": "2015, puzzle 17",
+  "title": "No Such Thing as Too Much",
+  "url": "https://adventofcode.com/2015/day/17",
+  "input": "50\n44\n11\n49\n42\n46\n18\n32\n26\n40\n21\n7\n18\n43\n10\n47\n36\n24\n22\n40",
+  "part1": {
+    "examples": [
+      {
+        "input": "20\n15\n10\n5\n5",
+        "answer": "4"
+      }
+    ],
+    "answer": "654"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "20\n15\n10\n5\n5",
+        "answer": "3"
+      }
+    ],
+    "answer": "57"
+  }
+}

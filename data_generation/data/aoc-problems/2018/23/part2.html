@@ -1,0 +1,13 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>Now, you just need to figure out where to position yourself so that you're actually teleported when the nanobots activate.</p>
+<p>To increase the probability of success, you need to find the coordinate which puts you <em>in range of the largest number of nanobots</em>. If there are multiple, choose one <em>closest to your position</em> (<code>0,0,0</code>, measured by manhattan distance).</p>
+<p>For example, given the following nanobot formation:</p>
+<pre><code>pos=&lt;10,12,12&gt;, r=2
+pos=&lt;12,14,12&gt;, r=2
+pos=&lt;16,12,12&gt;, r=4
+pos=&lt;14,14,14&gt;, r=6
+pos=&lt;50,50,50&gt;, r=200
+pos=&lt;10,10,10&gt;, r=5
+</code></pre>
+<p>Many coordinates are in range of some of the nanobots in this formation.  However, only the coordinate <code>12,12,12</code> is in range of the most nanobots: it is in range of the first five, but is not in range of the nanobot at <code>10,10,10</code>. (All other coordinates are in range of fewer than five nanobots.) This coordinate's distance from <code>0,0,0</code> is <code><em>36</em></code>.</p>
+<p>Find the coordinates that are in range of the largest number of nanobots. <em>What is the shortest manhattan distance between any of those points and <code>0,0,0</code>?</em></p>
+</article>

@@ -36,6 +36,8 @@ def run_local_model(
 
     prompt_config = CompProgrammingConfig() if comp_programming else NormalConfig()
 
+    print(data_dir)
+
     jobs = build_jobs(
         years,
         days,

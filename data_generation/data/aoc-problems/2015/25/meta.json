@@ -1,0 +1,159 @@
+{
+  "date": "2015, puzzle 25",
+  "title": "Let It Snow",
+  "url": "https://adventofcode.com/2015/day/25",
+  "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2981, column 3075.",
+  "part1": {
+    "examples": [
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 1, column 1.",
+        "answer": "20151125"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 1, column 2.",
+        "answer": "18749137"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 1, column 3.",
+        "answer": "17289845"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 1, column 4.",
+        "answer": "30943339"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 1, column 5.",
+        "answer": "10071777"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 1, column 6.",
+        "answer": "33511524"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2, column 1.",
+        "answer": "31916031"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2, column 2.",
+        "answer": "21629792"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2, column 3.",
+        "answer": "16929656"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2, column 4.",
+        "answer": "7726640"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2, column 5.",
+        "answer": "15514188"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 2, column 6.",
+        "answer": "4041754"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 3, column 1.",
+        "answer": "16080970"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 3, column 2.",
+        "answer": "8057251"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 3, column 3.",
+        "answer": "1601130"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 3, column 4.",
+        "answer": "7981243"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 3, column 5.",
+        "answer": "11661866"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 3, column 6.",
+        "answer": "16474243"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 4, column 1.",
+        "answer": "24592653"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 4, column 2.",
+        "answer": "32451966"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 4, column 3.",
+        "answer": "21345942"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 4, column 4.",
+        "answer": "9380097"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 4, column 5.",
+        "answer": "10600672"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 4, column 6.",
+        "answer": "31527494"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 5, column 1.",
+        "answer": "77061"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 5, column 2.",
+        "answer": "17552253"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 5, column 3.",
+        "answer": "28094349"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 5, column 4.",
+        "answer": "6899651"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 5, column 5.",
+        "answer": "9250759"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 5, column 6.",
+        "answer": "31663883"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 6, column 1.",
+        "answer": "33071741"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 6, column 2.",
+        "answer": "6796745"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 6, column 3.",
+        "answer": "25397450"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 6, column 4.",
+        "answer": "24659492"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 6, column 5.",
+        "answer": "1534922"
+      },
+      {
+        "input": "To continue, please consult the code grid in the manual.  Enter the code at row 6, column 6.",
+        "answer": "27995004"
+      }
+    ],
+    "answer": "9132360"
+  },
+  "part2": {
+    "examples": [],
+    "answer": ""
+  }
+}

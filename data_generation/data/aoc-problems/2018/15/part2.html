@@ -1,0 +1,73 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>According to your calculations, the Elves are going to lose badly. Surely, you won't mess up the timeline too much if you give them <span title="See also: the plot of every Civilization game.">just a little advanced technology</span>, right?</p>
+<p>You need to make sure the Elves not only <em>win</em>, but also suffer <em>no losses</em>: even the death of a single Elf is unacceptable.</p>
+<p>However, you can't go too far: larger changes will be more likely to permanently alter spacetime.</p>
+<p>So, you need to <em>find the outcome</em> of the battle in which the Elves have the <em>lowest integer attack power</em> (at least <code>4</code>) that allows them to <em>win without a single death</em>. The Goblins always have an attack power of <code>3</code>.</p>
+<p>In the first summarized example above, the lowest attack power the Elves need to win without losses is <code>15</code>:</p>
+<pre><code>#######       #######
+#.G...#       #..E..#   E(158)
+#...EG#       #...E.#   E(14)
+#.#.#G#  --&gt;  #.#.#.#
+#..G#E#       #...#.#
+#.....#       #.....#
+#######       #######
+
+Combat ends after 29 full rounds
+Elves win with 172 total hit points left
+Outcome: 29 * 172 = <em>4988</em>
+</code></pre>
+<p>In the second example above, the Elves need only <code>4</code> attack power:</p>
+<pre><code>#######       #######
+#E..EG#       #.E.E.#   E(200), E(23)
+#.#G.E#       #.#E..#   E(200)
+#E.##E#  --&gt;  #E.##E#   E(125), E(200)
+#G..#.#       #.E.#.#   E(200)
+#..E#.#       #...#.#
+#######       #######
+
+Combat ends after 33 full rounds
+Elves win with 948 total hit points left
+Outcome: 33 * 948 = <em>31284</em>
+</code></pre>
+<p>In the third example above, the Elves need <code>15</code> attack power:</p>
+<pre><code>#######       #######
+#E.G#.#       #.E.#.#   E(8)
+#.#G..#       #.#E..#   E(86)
+#G.#.G#  --&gt;  #..#..#
+#G..#.#       #...#.#
+#...E.#       #.....#
+#######       #######
+
+Combat ends after 37 full rounds
+Elves win with 94 total hit points left
+Outcome: 37 * 94 = <em>3478</em>
+</code></pre>
+<p>In the fourth example above, the Elves need <code>12</code> attack power:</p>
+<pre><code>#######       #######
+#.E...#       #...E.#   E(14)
+#.#..G#       #.#..E#   E(152)
+#.###.#  --&gt;  #.###.#
+#E#G#G#       #.#.#.#
+#...#G#       #...#.#
+#######       #######
+
+Combat ends after 39 full rounds
+Elves win with 166 total hit points left
+Outcome: 39 * 166 = <em>6474</em>
+</code></pre>
+<p>In the last example above, the lone Elf needs <code>34</code> attack power:</p>
+<pre><code>#########       #########   
+#G......#       #.......#   
+#.E.#...#       #.E.#...#   E(38)
+#..##..G#       #..##...#   
+#...##..#  --&gt;  #...##..#   
+#...#...#       #...#...#   
+#.G...G.#       #.......#   
+#.....G.#       #.......#   
+#########       #########   
+
+Combat ends after 30 full rounds
+Elves win with 38 total hit points left
+Outcome: 30 * 38 = <em>1140</em>
+</code></pre>
+<p>After increasing the Elves' attack power until it is just barely enough for them to win without any Elves dying, <em>what is the outcome</em> of the combat described in your puzzle input?</p>
+</article>

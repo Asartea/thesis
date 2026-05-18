@@ -1,0 +1,23 @@
+{
+  "date": "2015, puzzle 11",
+  "title": "Corporate Policy",
+  "url": "https://adventofcode.com/2015/day/11",
+  "input": "hxbxwxba",
+  "part1": {
+    "examples": [
+      {
+        "input": "abcdefgh",
+        "answer": "abcdffaa"
+      },
+      {
+        "input": "ghijklmn",
+        "answer": "ghjaabcc"
+      }
+    ],
+    "answer": "hxbxxyzz"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "hxcaabcc"
+  }
+}

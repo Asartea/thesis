@@ -1,0 +1,24 @@
+{
+  "date": "2021, puzzle 14",
+  "title": "Extended Polymerization",
+  "url": "https://adventofcode.com/2021/day/14",
+  "input": "KHSNHFKVVSVPSCVHBHNP\n\nFV -> H\nSB -> P\nNV -> S\nBS -> K\nKB -> V\nHB -> H\nNB -> N\nVB -> P\nCN -> C\nCF -> N\nOF -> P\nFO -> K\nOC -> F\nBN -> V\nPO -> O\nOS -> B\nKH -> N\nBB -> C\nPV -> K\nON -> K\nNF -> H\nBV -> K\nSN -> N\nPB -> S\nPK -> F\nPF -> S\nBP -> K\nSP -> K\nNN -> K\nFP -> N\nNK -> N\nSF -> P\nHS -> C\nOH -> C\nFS -> H\nVH -> N\nCO -> P\nVP -> H\nFF -> N\nKP -> B\nBH -> B\nPP -> F\nSS -> P\nCV -> S\nHO -> P\nPN -> K\nSO -> O\nNO -> O\nNH -> V\nHH -> F\nKK -> C\nVO -> B\nKS -> B\nSV -> O\nOP -> S\nVK -> H\nKF -> O\nCP -> H\nSH -> H\nNC -> S\nKC -> O\nCK -> H\nCH -> B\nKO -> O\nOV -> P\nVF -> V\nHN -> P\nFH -> P\nBC -> V\nHV -> N\nBO -> V\nPH -> P\nNP -> F\nFN -> F\nFK -> P\nSC -> C\nKN -> S\nNS -> S\nOK -> S\nHK -> O\nPC -> O\nBK -> O\nOO -> P\nBF -> N\nSK -> V\nVS -> B\nHP -> H\nVC -> V\nKV -> P\nFC -> H\nHC -> O\nHF -> S\nCB -> H\nCC -> B\nPS -> C\nOB -> B\nCS -> S\nVV -> S\nVN -> H\nFB -> N",
+  "part1": {
+    "examples": [
+      {
+        "input": "NNCB\n\nCH -> B\nHH -> N\nCB -> H\nNH -> C\nHB -> C\nHC -> B\nHN -> C\nNN -> C\nBH -> H\nNC -> B\nNB -> B\nBN -> B\nBB -> N\nBC -> B\nCC -> N\nCN -> C",
+        "answer": "1588"
+      }
+    ],
+    "answer": "2408"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "NNCB\n\nCH -> B\nHH -> N\nCB -> H\nNH -> C\nHB -> C\nHC -> B\nHN -> C\nNN -> C\nBH -> H\nNC -> B\nNB -> B\nBN -> B\nBB -> N\nBC -> B\nCC -> N\nCN -> C",
+        "answer": "2188189693529"
+      }
+    ],
+    "answer": "2651311098752"
+  }
+}

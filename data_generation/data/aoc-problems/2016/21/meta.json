@@ -1,0 +1,19 @@
+{
+  "date": "2016, puzzle 21",
+  "title": "Scrambled Letters and Hash",
+  "url": "https://adventofcode.com/2016/day/21",
+  "input": "swap position 5 with position 6\nreverse positions 1 through 6\nrotate right 7 steps\nrotate based on position of letter c\nrotate right 7 steps\nreverse positions 0 through 4\nswap letter f with letter h\nreverse positions 1 through 2\nmove position 1 to position 0\nrotate based on position of letter f\nmove position 6 to position 3\nreverse positions 3 through 6\nrotate based on position of letter c\nrotate based on position of letter b\nmove position 2 to position 4\nswap letter b with letter d\nmove position 1 to position 6\nmove position 7 to position 1\nswap letter f with letter c\nmove position 2 to position 3\nswap position 1 with position 7\nreverse positions 3 through 5\nswap position 1 with position 4\nmove position 4 to position 7\nrotate right 4 steps\nreverse positions 3 through 6\nmove position 0 to position 6\nswap position 3 with position 5\nswap letter e with letter h\nrotate based on position of letter c\nswap position 4 with position 7\nreverse positions 0 through 5\nrotate right 5 steps\nrotate left 0 steps\nrotate based on position of letter f\nswap letter e with letter b\nrotate right 2 steps\nrotate based on position of letter c\nswap letter a with letter e\nrotate left 4 steps\nrotate left 0 steps\nmove position 6 to position 7\nrotate right 2 steps\nrotate left 6 steps\nrotate based on position of letter d\nswap letter a with letter b\nmove position 5 to position 4\nreverse positions 0 through 7\nrotate left 3 steps\nrotate based on position of letter e\nrotate based on position of letter h\nswap position 4 with position 6\nreverse positions 4 through 5\nreverse positions 5 through 7\nrotate left 3 steps\nmove position 7 to position 2\nmove position 3 to position 4\nswap letter b with letter d\nreverse positions 3 through 4\nswap letter e with letter a\nrotate left 4 steps\nswap position 3 with position 4\nswap position 7 with position 5\nrotate right 1 step\nrotate based on position of letter g\nreverse positions 0 through 3\nswap letter g with letter b\nrotate based on position of letter b\nswap letter a with letter c\nswap position 0 with position 2\nreverse positions 1 through 3\nrotate left 7 steps\nswap letter f with letter a\nmove position 5 to position 0\nreverse positions 1 through 5\nrotate based on position of letter d\nrotate based on position of letter c\nrotate left 2 steps\nswap letter b with letter a\nswap letter f with letter c\nswap letter h with letter f\nrotate based on position of letter b\nrotate left 3 steps\nswap letter b with letter h\nreverse positions 1 through 7\nrotate based on position of letter h\nswap position 1 with position 5\nrotate left 1 step\nrotate based on position of letter h\nreverse positions 0 through 1\nswap position 5 with position 7\nreverse positions 0 through 2\nreverse positions 1 through 3\nmove position 1 to position 4\nreverse positions 1 through 3\nrotate left 1 step\nswap position 4 with position 1\nmove position 1 to position 3\nrotate right 2 steps\nmove position 0 to position 5",
+  "part1": {
+    "examples": [
+      {
+        "input": "swap position 4 with position 0\nswap letter d with letter b\nreverse positions 0 through 4\nrotate left 1 step\nmove position 1 to position 4\nmove position 3 to position 0\nrotate based on position of letter b\nrotate based on position of letter d",
+        "answer": "decab"
+      }
+    ],
+    "answer": "bdfhgeca"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "gdfcabeh"
+  }
+}

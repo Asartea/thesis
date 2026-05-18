@@ -1,0 +1,86 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>As you go to remove the virus from the infected nodes, it <em>evolves</em> to resist your attempt.</p>
+<p>Now, before it infects a clean node, it will <em>weaken</em> it to disable your defenses. If it encounters an infected node, it will instead <em>flag</em> the node to be cleaned in the future.  So:</p>
+<ul>
+<li><em>Clean</em> nodes become <em>weakened</em>.</li>
+<li><em>Weakened</em> nodes become <em>infected</em>.</li>
+<li><em>Infected</em> nodes become <em>flagged</em>.</li>
+<li><em>Flagged</em> nodes become <em>clean</em>.</li>
+</ul>
+<p>Every node is always in exactly one of the above states.</p>
+<p>The virus carrier still functions in a similar way, but now uses the following logic during its bursts of action:</p>
+<ul>
+<li>Decide which way to turn based on the <em>current node</em>:
+  <ul>
+<li>If it is <em>clean</em>, it turns <em>left</em>.</li>
+<li>If it is <em>weakened</em>, it does <em>not</em> turn, and will continue moving in the same direction.</li>
+<li>If it is <em>infected</em>, it turns <em>right</em>.</li>
+<li>If it is <em>flagged</em>, it <em>reverses</em> direction, and will go back the way it came.</li>
+</ul>
+</li>
+<li>Modify the state of the <em>current node</em>, as described above.</li>
+<li>The virus carrier moves <em>forward</em> one node in the direction it is facing.</li>
+</ul>
+<p>Start with the same map (still using <code>.</code> for <em>clean</em> and <code>#</code> for infected) and still with the virus carrier starting in the middle and facing <em>up</em>.</p>
+<p>Using the same initial state as the previous example, and drawing <em>weakened</em> as <code>W</code> and <em>flagged</em> as <code>F</code>, the middle of the infinite grid looks like this, with the virus carrier's position again marked with <code>[ ]</code>:</p>
+<pre><code>. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . # . . .
+. . . #[.]. . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+</code></pre>
+<p>This is the same as before, since no initial nodes are <em>weakened</em> or <em>flagged</em>.  The virus carrier is on a clean node, so it still turns left, instead <em>weakens</em> the node, and moves left:</p>
+<pre><code>. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . # . . .
+. . .[#]W . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+</code></pre>
+<p>The virus carrier is on an infected node, so it still turns right, instead <em>flags</em> the node, and moves up:</p>
+<pre><code>. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . .[.]. # . . .
+. . . F W . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+</code></pre>
+<p>This process repeats three more times, ending on the previously-flagged node and facing right:</p>
+<pre><code>. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . W W . # . . .
+. . W[F]W . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+</code></pre>
+<p>Finding a flagged node, it reverses direction and <em>cleans</em> the node:</p>
+<pre><code>. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . W W . # . . .
+. .[W]. W . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+</code></pre>
+<p>The <em>weakened</em> node becomes infected, and it continues in the same direction:</p>
+<pre><code>. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . W W . # . . .
+.[.]# . W . . . .
+. . . . . . . . .
+. . . . . . . . .
+. . . . . . . . .
+</code></pre>
+<p>Of the first <code>100</code> bursts, <code>26</code> will result in <em>infection</em>. Unfortunately, another feature of this evolved virus is <em>speed</em>; of the first <code>10000000</code> bursts, <code>2511944</code> will result in <em>infection</em>.</p>
+<p>Given your actual map, after <code>10000000</code> bursts of activity, <em>how many bursts cause a node to become infected</em>? (Do not count nodes that begin infected.)</p>
+</article>

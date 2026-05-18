@@ -1,0 +1,19 @@
+{
+  "date": "2017, puzzle 17",
+  "title": "Spinlock",
+  "url": "https://adventofcode.com/2017/day/17",
+  "input": "380",
+  "part1": {
+    "examples": [
+      {
+        "input": "3",
+        "answer": "638"
+      }
+    ],
+    "answer": "204"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "28954211"
+  }
+}

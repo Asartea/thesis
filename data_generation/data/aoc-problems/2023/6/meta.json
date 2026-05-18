@@ -1,0 +1,24 @@
+{
+  "date": "2023, puzzle 06",
+  "title": "Wait For It",
+  "url": "https://adventofcode.com/2023/day/6",
+  "input": "Time:        48     87     69     81\nDistance:   255   1288   1117   1623",
+  "part1": {
+    "examples": [
+      {
+        "input": "Time:      7  15   30\nDistance:  9  40  200",
+        "answer": "288"
+      }
+    ],
+    "answer": "252000"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "Time:      7  15   30\nDistance:  9  40  200",
+        "answer": "71503"
+      }
+    ],
+    "answer": "36992486"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2016, puzzle 13",
+  "title": "A Maze of Twisty Little Cubicles",
+  "url": "https://adventofcode.com/2016/day/13",
+  "input": "1362",
+  "part1": {
+    "examples": [
+      {
+        "input": "10",
+        "answer": "11"
+      }
+    ],
+    "answer": "82"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "138"
+  }
+}

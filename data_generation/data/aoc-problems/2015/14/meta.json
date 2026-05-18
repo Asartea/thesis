@@ -1,0 +1,24 @@
+{
+  "date": "2015, puzzle 14",
+  "title": "Reindeer Olympics",
+  "url": "https://adventofcode.com/2015/day/14",
+  "input": "Vixen can fly 8 km/s for 8 seconds, but then must rest for 53 seconds.\nBlitzen can fly 13 km/s for 4 seconds, but then must rest for 49 seconds.\nRudolph can fly 20 km/s for 7 seconds, but then must rest for 132 seconds.\nCupid can fly 12 km/s for 4 seconds, but then must rest for 43 seconds.\nDonner can fly 9 km/s for 5 seconds, but then must rest for 38 seconds.\nDasher can fly 10 km/s for 4 seconds, but then must rest for 37 seconds.\nComet can fly 3 km/s for 37 seconds, but then must rest for 76 seconds.\nPrancer can fly 9 km/s for 12 seconds, but then must rest for 97 seconds.\nDancer can fly 37 km/s for 1 seconds, but then must rest for 36 seconds.",
+  "part1": {
+    "examples": [
+      {
+        "input": "Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.\nDancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds.",
+        "answer": "1120"
+      }
+    ],
+    "answer": "2655"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.\nDancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds.",
+        "answer": "689"
+      }
+    ],
+    "answer": "1059"
+  }
+}

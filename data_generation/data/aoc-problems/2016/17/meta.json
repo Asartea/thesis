@@ -1,0 +1,40 @@
+{
+  "date": "2016, puzzle 17",
+  "title": "Two Steps Forward",
+  "url": "https://adventofcode.com/2016/day/17",
+  "input": "rrrbmfta",
+  "part1": {
+    "examples": [
+      {
+        "input": "ihgpwlah",
+        "answer": "DDRRRD"
+      },
+      {
+        "input": "kglvqrro",
+        "answer": "DDUDRLRRUDRD"
+      },
+      {
+        "input": "ulqzkmiv",
+        "answer": "DRURDRUDDLLDLUURRDULRLDUUDDDRR"
+      }
+    ],
+    "answer": "RLRDRDUDDR"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "ihgpwlah",
+        "answer": "370"
+      },
+      {
+        "input": "kglvqrro",
+        "answer": "492"
+      },
+      {
+        "input": "ulqzkmiv",
+        "answer": "830"
+      }
+    ],
+    "answer": "420"
+  }
+}

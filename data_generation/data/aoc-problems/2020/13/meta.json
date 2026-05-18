@@ -1,0 +1,44 @@
+{
+  "date": "2020, puzzle 13",
+  "title": "Shuttle Search",
+  "url": "https://adventofcode.com/2020/day/13",
+  "input": "1002461\n29,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,41,x,x,x,x,x,x,x,x,x,521,x,x,x,x,x,x,x,23,x,x,x,x,13,x,x,x,17,x,x,x,x,x,x,x,x,x,x,x,x,x,601,x,x,x,x,x,37,x,x,x,x,x,x,x,x,x,x,x,x,19",
+  "part1": {
+    "examples": [
+      {
+        "input": "939\n7,13,x,x,59,x,31,19",
+        "answer": "295"
+      }
+    ],
+    "answer": "4207"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "939\n7,13,x,x,59,x,31,19",
+        "answer": "1068781"
+      },
+      {
+        "input": "0\n17,x,13,19",
+        "answer": "3417"
+      },
+      {
+        "input": "0\n67,7,59,61",
+        "answer": "754018"
+      },
+      {
+        "input": "0\n67,x,7,59,61",
+        "answer": "779210"
+      },
+      {
+        "input": "0\n67,7,x,59,61",
+        "answer": "1261476"
+      },
+      {
+        "input": "0\n1789,37,47,1889",
+        "answer": "1202161486"
+      }
+    ],
+    "answer": "725850285300475"
+  }
+}

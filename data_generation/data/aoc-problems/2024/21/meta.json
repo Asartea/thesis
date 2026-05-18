@@ -1,0 +1,19 @@
+{
+  "date": "2024, puzzle 21",
+  "title": "Keypad Conundrum",
+  "url": "https://adventofcode.com/2024/day/21",
+  "input": "780A\n846A\n965A\n386A\n638A",
+  "part1": {
+    "examples": [
+      {
+        "input": "029A\n980A\n179A\n456A\n379A",
+        "answer": "126384"
+      }
+    ],
+    "answer": "246990"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "306335137543664"
+  }
+}

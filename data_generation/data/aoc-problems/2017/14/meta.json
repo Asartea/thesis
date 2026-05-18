@@ -1,0 +1,24 @@
+{
+  "date": "2017, puzzle 14",
+  "title": "Disk Defragmentation",
+  "url": "https://adventofcode.com/2017/day/14",
+  "input": "hfdlxzhv",
+  "part1": {
+    "examples": [
+      {
+        "input": "flqrgnkx",
+        "answer": "8108"
+      }
+    ],
+    "answer": "8230"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "flqrgnkx",
+        "answer": "1242"
+      }
+    ],
+    "answer": "1103"
+  }
+}

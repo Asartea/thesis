@@ -1,0 +1,32 @@
+{
+  "date": "2019, puzzle 12",
+  "title": "The N-Body Problem",
+  "url": "https://adventofcode.com/2019/day/12",
+  "input": "<x=14, y=15, z=-2>\n<x=17, y=-3, z=4>\n<x=6, y=12, z=-13>\n<x=-2, y=10, z=-8>",
+  "part1": {
+    "examples": [
+      {
+        "input": "<x=-1, y=0, z=2>\n<x=2, y=-10, z=-7>\n<x=4, y=-8, z=8>\n<x=3, y=5, z=-1>",
+        "answer": "179"
+      },
+      {
+        "input": "<x=-8, y=-10, z=0>\n<x=5, y=5, z=10>\n<x=2, y=-7, z=3>\n<x=9, y=-8, z=-3>",
+        "answer": "1940"
+      }
+    ],
+    "answer": "10189"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "<x=-1, y=0, z=2>\n<x=2, y=-10, z=-7>\n<x=4, y=-8, z=8>\n<x=3, y=5, z=-1>",
+        "answer": "2772"
+      },
+      {
+        "input": "<x=-8, y=-10, z=0>\n<x=5, y=5, z=10>\n<x=2, y=-7, z=3>\n<x=9, y=-8, z=-3>",
+        "answer": "4686774924"
+      }
+    ],
+    "answer": "469671086427712"
+  }
+}

@@ -1,0 +1,20 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>As you look out at the field of springs, you feel like there are way more springs than the condition records list. When you examine the records, you discover that they were actually <em>folded up</em> this whole time!</p>
+<p>To <em>unfold the records</em>, on each row, replace the list of spring conditions with five copies of itself (separated by <code>?</code>) and replace the list of contiguous groups of damaged springs with five copies of itself (separated by <code>,</code>).</p>
+<p>So, this row:</p>
+<pre><code>.# 1</code></pre>
+<p>Would become:</p>
+<pre><code>.#?.#?.#?.#?.# 1,1,1,1,1</code></pre>
+<p>The first line of the above example would become:</p>
+<pre><code>???.###????.###????.###????.###????.### 1,1,3,1,1,3,1,1,3,1,1,3,1,1,3</code></pre>
+<p>In the above example, after unfolding, the number of possible arrangements for some rows is now much larger:</p>
+<ul>
+<li><code>???.### 1,1,3</code> - <code><em>1</em></code> arrangement</li>
+<li><code>.??..??...?##. 1,1,3</code> - <code><em>16384</em></code> arrangements</li>
+<li><code>?#?#?#?#?#?#?#? 1,3,1,6</code> - <code><em>1</em></code> arrangement</li>
+<li><code>????.#...#... 4,1,1</code> - <code><em>16</em></code> arrangements</li>
+<li><code>????.######..#####. 1,6,5</code> - <code><em>2500</em></code> arrangements</li>
+<li><code>?###???????? 3,2,1</code> - <code><em>506250</em></code> arrangements</li>
+</ul>
+<p>After unfolding, adding all of the possible arrangement counts together produces <code><em>525152</em></code>.</p>
+<p>Unfold your condition records; <em>what is the new sum of possible arrangement counts?</em></p>
+</article>

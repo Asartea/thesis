@@ -1,0 +1,19 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>The escalator doesn't move. The Elf explains that it probably needs more joltage to overcome the <a href="https://en.wikipedia.org/wiki/Static_friction" target="_blank">static friction</a> of the system and hits the big red "joltage limit safety override" button. You lose count of the number of times she needs to confirm "yes, I'm sure" and decorate the lobby a bit while you wait.</p>
+<p>Now, you need to make the largest joltage by turning on <em>exactly twelve</em> batteries within each bank.</p>
+<p>The joltage output for the bank is still the number formed by the digits of the batteries you've turned on; the only difference is that now there will be <code><em>12</em></code> digits in each bank's joltage output instead of two.</p>
+<p>Consider again the example from before:</p>
+<pre><code>987654321111111
+811111111111119
+234234234234278
+818181911112111
+</code></pre>
+<p>Now, the joltages are much larger:</p>
+<ul>
+<li>In <code><em>987654321111</em>111</code>, the largest joltage can be found by turning on everything except some <code>1</code>s at the end to produce <code><em>987654321111</em></code>.</li>
+<li>In the digit sequence <code><em>81111111111</em>111<em>9</em></code>, the largest joltage can be found by turning on everything except some <code>1</code>s, producing <code><em>811111111119</em></code>.</li>
+<li>In <code>23<em>4</em>2<em>34234234278</em></code>, the largest joltage can be found by turning on everything except a <code>2</code> battery, a <code>3</code> battery, and another <code>2</code> battery near the start to produce <code><em>434234234278</em></code>.</li>
+<li>In <code><em>8</em>1<em>8</em>1<em>8</em>1<em>911112111</em></code>, the joltage <code><em>888911112111</em></code> is produced by turning on everything except some <code>1</code>s near the front.</li>
+</ul>
+<p>The total output joltage is now much larger: <code>987654321111</code> + <code>811111111119</code> + <code>434234234278</code> + <code>888911112111</code> = <code><em>3121910778619</em></code>.</p>
+<p><em>What is the new total output joltage?</em></p>
+</article>

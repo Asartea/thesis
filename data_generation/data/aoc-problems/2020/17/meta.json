@@ -1,0 +1,24 @@
+{
+  "date": "2020, puzzle 17",
+  "title": "Conway Cubes",
+  "url": "https://adventofcode.com/2020/day/17",
+  "input": "####...#\n......##\n####..##\n##......\n..##.##.\n#.##...#\n....##.#\n.##.#.#.",
+  "part1": {
+    "examples": [
+      {
+        "input": ".#.\n..#\n###",
+        "answer": "112"
+      }
+    ],
+    "answer": "237"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": ".#.\n..#\n###",
+        "answer": "848"
+      }
+    ],
+    "answer": "2448"
+  }
+}

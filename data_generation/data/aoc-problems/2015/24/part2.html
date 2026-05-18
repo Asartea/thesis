@@ -1,0 +1,15 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>That's weird... the sleigh still isn't balancing.</p>
+<p>"Ho ho ho", Santa muses to himself. "I forgot the trunk".</p>
+<p>Balance the sleigh again, but this time, separate the packages into <em>four groups</em> instead of three.  The other constraints still apply.</p>
+<p>Given the example packages above, this would be some of the new unique first groups, their quantum entanglements, and one way to divide the remaining packages:</p>
+<pre><code>
+11 4    (QE=44); 10 5;   9 3 2 1; 8 7
+10 5    (QE=50); 11 4;   9 3 2 1; 8 7
+9 5 1   (QE=45); 11 4;   10 3 2;  8 7
+9 4 2   (QE=72); 11 3 1; 10 5;    8 7
+9 3 2 1 (QE=54); 11 4;   10 5;    8 7
+8 7     (QE=56); 11 4;   10 5;    9 3 2 1
+</code></pre>
+<p>Of these, there are three arrangements that put the minimum (two) number of packages in the first group: <code>11 4</code>, <code>10 5</code>, and <code>8 7</code>.  Of these, <code>11 4</code> has the lowest quantum entanglement, and so it is selected.</p>
+<p>Now, what is the <em>quantum entanglement</em> of the first group of packages in the ideal configuration?</p>
+</article>

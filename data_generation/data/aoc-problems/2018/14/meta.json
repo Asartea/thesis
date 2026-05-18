@@ -1,0 +1,48 @@
+{
+  "date": "2018, puzzle 14",
+  "title": "Chocolate Charts",
+  "url": "https://adventofcode.com/2018/day/14",
+  "input": "209231",
+  "part1": {
+    "examples": [
+      {
+        "input": "9",
+        "answer": "5158916779"
+      },
+      {
+        "input": "5",
+        "answer": "0124515891"
+      },
+      {
+        "input": "18",
+        "answer": "9251071085"
+      },
+      {
+        "input": "2018",
+        "answer": "5941429882"
+      }
+    ],
+    "answer": "6126491027"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "5158916779",
+        "answer": "9"
+      },
+      {
+        "input": "0124515891",
+        "answer": "5"
+      },
+      {
+        "input": "9251071085",
+        "answer": "18"
+      },
+      {
+        "input": "5941429882",
+        "answer": "2018"
+      }
+    ],
+    "answer": "20191616"
+  }
+}

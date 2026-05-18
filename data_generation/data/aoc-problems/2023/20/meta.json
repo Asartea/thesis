@@ -1,0 +1,23 @@
+{
+  "date": "2023, puzzle 20",
+  "title": "Pulse Propagation",
+  "url": "https://adventofcode.com/2023/day/20",
+  "input": "%lh -> mj\n%nd -> qf\n&pn -> dh, dk, bg, qs, rp, bk, gs\n%bk -> rs\n%nh -> lh\n%hc -> jg, ks\n%pt -> gv, jg\n&dh -> jz\n%jq -> nd\n%gv -> jg, mr\n%gm -> jv\n&zt -> jq, rn, nd, bt, jh, gm\n%mz -> dc, zt\n%nf -> dm, pn\n%bg -> bk\n%qt -> qx, xk\n%dc -> zt, db\n%rc -> gz, jg\n%kx -> pn, gj\n%mj -> zm\n%rs -> pn, dk\n%lv -> tb, jg\n&mk -> jz\n%bt -> pv, zt\n%cg -> mz, zt\n%pk -> qx\n%jd -> lv, jg\n%jv -> jh, zt\n%ks -> jg, jd\n%gs -> bg\nbroadcaster -> bt, rc, qs, qt\n%dm -> rm, pn\n%pv -> jq, zt\n%db -> zt\n%dv -> sl, qx\n%qs -> rp, pn\n%sr -> hf\n%qf -> gm, zt\n&jz -> rx\n&vf -> jz\n%gz -> vj, jg\n%mr -> jg\n%dk -> kx\n&jg -> rc, mk, vj\n%qh -> hc, jg\n%vj -> qh\n%tb -> pt, jg\n%rm -> pn\n%gj -> pn, nf\n%rp -> gs\n%xk -> td, qx\n%hf -> nh\n&rn -> jz\n&qx -> lh, vf, hf, nh, sr, mj, qt\n%td -> sr, qx\n%sl -> pk, qx\n%jh -> cg\n%zm -> dv, qx",
+  "part1": {
+    "examples": [
+      {
+        "input": "broadcaster -> a, b, c\n%a -> b\n%b -> c\n%c -> inv\n&inv -> a",
+        "answer": "32000000"
+      },
+      {
+        "input": "broadcaster -> a\n%a -> inv, con\n&inv -> b\n%b -> con\n&con -> output",
+        "answer": "11687500"
+      }
+    ],
+    "answer": "861743850"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "247023644760071"
+  }
+}

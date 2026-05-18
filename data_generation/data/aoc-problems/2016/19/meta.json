@@ -1,0 +1,24 @@
+{
+  "date": "2016, puzzle 19",
+  "title": "An Elephant Named Joseph",
+  "url": "https://adventofcode.com/2016/day/19",
+  "input": "3005290",
+  "part1": {
+    "examples": [
+      {
+        "input": "5",
+        "answer": "3"
+      }
+    ],
+    "answer": "1816277"
+  },
+  "part2": {
+    "examples": [
+      {
+        "input": "5",
+        "answer": "2"
+      }
+    ],
+    "answer": "1410967"
+  }
+}

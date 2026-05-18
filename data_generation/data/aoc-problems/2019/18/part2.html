@@ -1,0 +1,125 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>You arrive at the vault only to <span title="To see the inspiration for this puzzle, look up 'Link to the Past Randomizer Multiworld'.">discover</span> that there is not one vault, but <em>four</em> - each with its own entrance.</p>
+<p>On your map, find the area in the middle that looks like this:</p>
+<pre><code>...
+.@.
+...
+</code></pre>
+<p>Update your map to instead use the correct data:</p>
+<pre><code>@#@
+###
+@#@
+</code></pre>
+<p>This change will split your map into four separate sections, each with its own entrance:</p>
+<pre><code>#######       #######
+#a.#Cd#       #a.#Cd#
+##...##       ##<em>@#@</em>##
+##.@.##  --&gt;  ##<em>###</em>##
+##...##       ##<em>@#@</em>##
+#cB#Ab#       #cB#Ab#
+#######       #######
+</code></pre>
+<p>Because some of the keys are for doors in other vaults, it would take much too long to collect all of the keys by yourself.  Instead, you deploy four remote-controlled robots. Each starts at one of the entrances (<code>@</code>).</p>
+<p>Your goal is still to <em>collect all of the keys in the fewest steps</em>, but now, each robot has its own position and can move independently.  You can only remotely control a single robot at a time. Collecting a key instantly unlocks any corresponding doors, regardless of the vault in which the key or door is found.</p>
+<p>For example, in the map above, the top-left robot first collects key <code>a</code>, unlocking door <code>A</code> in the bottom-right vault:</p>
+<pre><code>#######
+#@.#Cd#
+##.#@##
+#######
+##@#@##
+#cB#.b#
+#######
+</code></pre>
+<p>Then, the bottom-right robot collects key <code>b</code>, unlocking door <code>B</code> in the bottom-left vault:</p>
+<pre><code>#######
+#@.#Cd#
+##.#@##
+#######
+##@#.##
+#c.#.@#
+#######
+</code></pre>
+<p>Then, the bottom-left robot collects key <code>c</code>:</p>
+<pre><code>#######
+#@.#.d#
+##.#@##
+#######
+##.#.##
+#@.#.@#
+#######
+</code></pre>
+<p>Finally, the top-right robot collects key <code>d</code>:</p>
+<pre><code>#######
+#@.#.@#
+##.#.##
+#######
+##.#.##
+#@.#.@#
+#######
+</code></pre>
+<p>In this example, it only took <code><em>8</em></code> steps to collect all of the keys.</p>
+<p>Sometimes, multiple robots might have keys available, or a robot might have to wait for multiple keys to be collected:</p>
+<pre><code>###############
+#d.ABC.#.....a#
+######@#@######
+###############
+######@#@######
+#b.....#.....c#
+###############
+</code></pre>
+<p>First, the top-right, bottom-left, and bottom-right robots take turns collecting keys <code>a</code>, <code>b</code>, and <code>c</code>, a total of <code>6 + 6 + 6 = 18</code> steps. Then, the top-left robot can access key <code>d</code>, spending another <code>6</code> steps; collecting all of the keys here takes a minimum of <code><em>24</em></code> steps.</p>
+<p>Here's a more complex example:</p>
+<pre><code>#############
+#DcBa.#.GhKl#
+#.###@#@#I###
+#e#d#####j#k#
+###C#@#@###J#
+#fEbA.#.FgHi#
+#############
+</code></pre>
+<ul>
+<li>Top-left robot collects key <code>a</code>.</li>
+<li>Bottom-left robot collects key <code>b</code>.</li>
+<li>Top-left robot collects key <code>c</code>.</li>
+<li>Bottom-left robot collects key <code>d</code>.</li>
+<li>Top-left robot collects key <code>e</code>.</li>
+<li>Bottom-left robot collects key <code>f</code>.</li>
+<li>Bottom-right robot collects key <code>g</code>.</li>
+<li>Top-right robot collects key <code>h</code>.</li>
+<li>Bottom-right robot collects key <code>i</code>.</li>
+<li>Top-right robot collects key <code>j</code>.</li>
+<li>Bottom-right robot collects key <code>k</code>.</li>
+<li>Top-right robot collects key <code>l</code>.</li>
+</ul>
+<p>In the above example, the fewest steps to collect all of the keys is <code><em>32</em></code>.</p>
+<p>Here's an example with more choices:</p>
+<pre><code>#############
+#g#f.D#..h#l#
+#F###e#E###.#
+#dCba@#@BcIJ#
+#############
+#nK.L@#@G...#
+#M###N#H###.#
+#o#m..#i#jk.#
+#############
+</code></pre>
+<p>One solution with the fewest steps is:</p>
+<ul>
+<li>Top-left robot collects key <code>e</code>.</li>
+<li>Top-right robot collects key <code>h</code>.</li>
+<li>Bottom-right robot collects key <code>i</code>.</li>
+<li>Top-left robot collects key <code>a</code>.</li>
+<li>Top-left robot collects key <code>b</code>.</li>
+<li>Top-right robot collects key <code>c</code>.</li>
+<li>Top-left robot collects key <code>d</code>.</li>
+<li>Top-left robot collects key <code>f</code>.</li>
+<li>Top-left robot collects key <code>g</code>.</li>
+<li>Bottom-right robot collects key <code>k</code>.</li>
+<li>Bottom-right robot collects key <code>j</code>.</li>
+<li>Top-right robot collects key <code>l</code>.</li>
+<li>Bottom-left robot collects key <code>n</code>.</li>
+<li>Bottom-left robot collects key <code>m</code>.</li>
+<li>Bottom-left robot collects key <code>o</code>.</li>
+</ul>
+<p>This example requires at least <code><em>72</em></code> steps to collect all keys.</p>
+<p>After updating your map and using the remote-controlled robots, <em>what is the fewest steps necessary to collect all of the keys?</em></p>
+</article>

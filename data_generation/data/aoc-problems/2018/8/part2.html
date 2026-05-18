@@ -1,0 +1,12 @@
+<article class="day-desc"><h2 id="part2">--- Part Two ---</h2><p>The second check is slightly more complicated: you need to find the value of the root node (<code>A</code> in the example above).</p>
+<p>The <em>value of a node</em> depends on whether it has child nodes.</p>
+<p>If a node has <em>no child nodes</em>, its value is the sum of its metadata entries. So, the value of node <code>B</code> is <code>10+11+12=33</code>, and the value of node <code>D</code> is <code>99</code>.</p>
+<p>However, if a node <em>does have child nodes</em>, the metadata entries become indexes which refer to those child nodes. A metadata entry of <code>1</code> refers to the first child node, <code>2</code> to the second, <code>3</code> to the third, and so on. The value of this node is the sum of the values of the child nodes referenced by the metadata entries. If a referenced child node does not exist, that reference is skipped. A child node can be referenced multiple time and counts each time it is referenced. A metadata entry of <code>0</code> does not refer to any child node.</p>
+<p>For example, again using the above nodes:</p>
+<ul>
+<li>Node <code>C</code> has one metadata entry, <code>2</code>. Because node <code>C</code> has only one child node, <code>2</code> references a child node which does not exist, and so the value of node <code>C</code> is <code>0</code>.</li>
+<li>Node <code>A</code> has three metadata entries: <code>1</code>, <code>1</code>, and <code>2</code>. The <code>1</code> references node <code>A</code>'s first child node, <code>B</code>, and the <code>2</code> references node <code>A</code>'s second child node, <code>C</code>. Because node B has a value of <code>33</code> and node <code>C</code> has a value of <code>0</code>, the value of node <code>A</code> is <code>33+33+0=<em>66</em></code>.</li>
+</ul>
+<p>So, in this example, the value of the root node is <code>66</code>.</p>
+<p><em>What is the value of the root node?</em></p>
+</article>

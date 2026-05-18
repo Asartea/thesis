@@ -1,0 +1,39 @@
+{
+  "date": "2015, puzzle 10",
+  "title": "Elves Look, Elves Say",
+  "url": "https://adventofcode.com/2015/day/10",
+  "input": "3113322113",
+  "part1": {
+    "examples": [
+      {
+        "input": "211",
+        "answer": "4"
+      },
+      {
+        "input": "1",
+        "answer": "2"
+      },
+      {
+        "input": "11",
+        "answer": "2"
+      },
+      {
+        "input": "21",
+        "answer": "4"
+      },
+      {
+        "input": "1211",
+        "answer": "6"
+      },
+      {
+        "input": "111221",
+        "answer": "6"
+      }
+    ],
+    "answer": "329356"
+  },
+  "part2": {
+    "examples": [],
+    "answer": "4666278"
+  }
+}
