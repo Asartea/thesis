@@ -93,10 +93,7 @@ def extract_ast_features(code: str) -> list[float]:
     - depth statistics
     """
 
-    try:
-        tree = ast.parse(code)
-    except (SyntaxError, ValueError):
-        return [0.0] * (len(AST_NODE_TYPES) + 4)
+    tree = ast.parse(code)  # samples are prevalidated, so this should not raise
 
     nodes = list(ast.walk(tree))
     total_nodes = len(nodes) or 1
@@ -144,10 +141,9 @@ def extract_token_features(code: str) -> list[float]:
     - structural density proxies
     """
 
-    try:
-        tokens = list(tokenize.generate_tokens(io.StringIO(code).readline))
-    except tokenize.TokenError:
-        return [0.0] * 12
+    tokens = list(
+        tokenize.generate_tokens(io.StringIO(code).readline)
+    )  # samples are prevalidated, so this should not raise
 
     total = len(tokens) or 1
 
@@ -251,24 +247,25 @@ def build_features(
         X_train_parts.append(tf_idf.fit_transform(train_codes))
         X_test_parts.append(tf_idf.transform(test_codes))
 
-    if use_ast or use_token:
-        if use_ast:
-            ast_train = np.array([extract_ast_features(c) for c in train_codes])
-            ast_test = np.array([extract_ast_features(c) for c in test_codes])
-        else:
-            ast_train = np.zeros((len(train_codes), len(AST_NODE_TYPES) + 4))
-            ast_test = np.zeros((len(test_codes), len(AST_NODE_TYPES) + 4))
+    dense_parts_train: list[np.ndarray] = []
+    dense_parts_test: list[np.ndarray] = []
 
-        if use_token:
-            token_train = np.array([extract_token_features(c) for c in train_codes])
-            token_test = np.array([extract_token_features(c) for c in test_codes])
-        else:
-            token_train = np.zeros((len(train_codes), 11))
-            token_test = np.zeros((len(test_codes), 11))
+    if use_ast:
+        ast_train = np.array([extract_ast_features(c) for c in train_codes])
+        ast_test = np.array([extract_ast_features(c) for c in test_codes])
+        dense_parts_train.append(ast_train)
+        dense_parts_test.append(ast_test)
 
+    if use_token:
+        token_train = np.array([extract_token_features(c) for c in train_codes])
+        token_test = np.array([extract_token_features(c) for c in test_codes])
+        dense_parts_train.append(token_train)
+        dense_parts_test.append(token_test)
+
+    if dense_parts_train:
         scaler = StandardScaler()
-        dense_train = scaler.fit_transform(np.hstack([ast_train, token_train]))
-        dense_test = scaler.transform(np.hstack([ast_test, token_test]))
+        dense_train = scaler.fit_transform(np.hstack(dense_parts_train))
+        dense_test = scaler.transform(np.hstack(dense_parts_test))
 
         X_train_parts.append(csr_matrix(dense_train))
         X_test_parts.append(csr_matrix(dense_test))
