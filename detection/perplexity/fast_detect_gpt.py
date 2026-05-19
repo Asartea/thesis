@@ -10,6 +10,7 @@ def main():
     args = SimpleNamespace(
         scoring_model_name=scoring_model,
         sampling_model_name=sampling_model,
+        cache_dir="./cache",
     )
     detector = FastDetectGPT(args)
     samples = load_samples("data/samples.jsonl")
