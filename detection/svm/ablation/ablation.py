@@ -1,8 +1,10 @@
 from typing import TypedDict
-
+from pathlib import Path
+import json
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GroupKFold
+
 from detection.svm.classifier import (
     build_features,
     build_group_id,
@@ -23,78 +25,41 @@ class AblationConfig(TypedDict):
 
 
 ABLATIONS: list[AblationConfig] = [
-    {
-        "name": "tfidf_only",
-        "use_tfidf": True,
-        "use_ast": False,
-        "use_token": False,
-    },
-    {
-        "name": "ast_only",
-        "use_tfidf": False,
-        "use_ast": True,
-        "use_token": False,
-    },
-    {
-        "name": "token_only",
-        "use_tfidf": False,
-        "use_ast": False,
-        "use_token": True,
-    },
-    {
-        "name": "tfidf_ast",
-        "use_tfidf": True,
-        "use_ast": True,
-        "use_token": False,
-    },
-    {
-        "name": "tfidf_token",
-        "use_tfidf": True,
-        "use_ast": False,
-        "use_token": True,
-    },
-    {
-        "name": "ast_token",
-        "use_tfidf": False,
-        "use_ast": True,
-        "use_token": True,
-    },
-    {
-        "name": "full_model",
-        "use_tfidf": True,
-        "use_ast": True,
-        "use_token": True,
-    },
+    {"name": "tfidf_only", "use_tfidf": True, "use_ast": False, "use_token": False},
+    {"name": "ast_only", "use_tfidf": False, "use_ast": True, "use_token": False},
+    {"name": "token_only", "use_tfidf": False, "use_ast": False, "use_token": True},
+    {"name": "tfidf_ast", "use_tfidf": True, "use_ast": True, "use_token": False},
+    {"name": "tfidf_token", "use_tfidf": True, "use_ast": False, "use_token": True},
+    {"name": "ast_token", "use_tfidf": False, "use_ast": True, "use_token": True},
+    {"name": "full_model", "use_tfidf": True, "use_ast": True, "use_token": True},
 ]
 
 
 def run_ablation_cv(
     samples: Samples,
     *,
-    group_mode: str = "problem",
-    n_splits: int = 5,
+    group_mode: str,
+    n_splits: int,
+    log_path: Path,
 ):
-
     labels = np.array([get_label(s) for s in samples])
     groups = np.array([build_group_id(s, mode=group_mode) for s in samples])
 
     gkf = GroupKFold(n_splits=n_splits)
 
-    results: list[dict[str, str | float]] = []
+    log = {"group_mode": group_mode, "n_splits": n_splits, "ablation_runs": []}
 
     for ablation in ABLATIONS:
-        fold_accs: list[float] = []
-        fold_f1s: list[float] = []
+        fold_accs, fold_f1s = [], []
         cm_sum = np.zeros((2, 2), dtype=int)
-        print("\n" + "=" * 80)
-        print(f"ABLATION: {ablation['name']} | GROUP: {group_mode}")
-        print("=" * 80)
+
+        ablation_log = {"ablation": ablation["name"], "folds": []}
 
         for fold, (train_idx, test_idx) in enumerate(
             gkf.split(samples, labels, groups)
         ):
-            train_samples: Samples = [samples[i] for i in train_idx]
-            test_samples: Samples = [samples[i] for i in test_idx]
+            train_samples = [samples[i] for i in train_idx]
+            test_samples = [samples[i] for i in test_idx]
 
             y_train = labels[train_idx]
             y_test = labels[test_idx]
@@ -116,60 +81,76 @@ def run_ablation_cv(
             )
 
             model = train_model(X_train, y_train)
-
             metrics = evaluate_model(model, X_test, y_test)
 
-            acc = metrics["accuracy"]
-            f1 = metrics["f1_macro"]
+            acc = float(metrics["accuracy"])
+            f1 = float(metrics["f1_macro"])
             cm = metrics["confusion_matrix"]
+
             fold_accs.append(acc)
-            cm_sum += cm
             fold_f1s.append(f1)
+            cm_sum += cm
 
-            print(f"Fold {fold}: acc={acc:.4f} | f1={f1:.4f}")
-            print("Confusion matrix:")
+            ablation_log["folds"].append(
+                {
+                    "fold": fold,
+                    "accuracy": acc,
+                    "f1_macro": f1,
+                    "confusion_matrix": cm.tolist(),
+                }
+            )
 
-            print(cm)
-        print("\nFinal aggregated confusion matrix:")
-        print(cm_sum)
+        result = {
+            "name": ablation["name"],
+            "group_mode": group_mode,
+            "accuracy_mean": float(np.mean(fold_accs)),
+            "accuracy_std": float(np.std(fold_accs)),
+            "f1_mean": float(np.mean(fold_f1s)),
+            "f1_std": float(np.std(fold_f1s)),
+            "confusion_matrix_sum": cm_sum.tolist(),
+        }
 
-        results.append(
-            {
-                "name": ablation["name"],
-                "group_mode": group_mode,
-                "accuracy_mean": float(np.mean(fold_accs)),
-                "accuracy_std": float(np.std(fold_accs)),
-                "f1_mean": float(np.mean(fold_f1s)),
-                "f1_std": float(np.std(fold_f1s)),
-            }
-        )
+        ablation_log["summary"] = result
+        log["ablation_runs"].append(ablation_log)
 
-    return results
-
-
-def print_ablation_results(results: list[dict[str, str | float]]):
-    print("\n" + "#" * 80)
-    print("ABALATION SUMMARY (GROUPED CV)")
-    print("#" * 80)
-
-    for r in results:
-        print(
-            f"{r['name']:15s} | "
-            f"{r['group_mode']:10s} | "
-            f"{r['accuracy_mean']:.4f} ± {r['accuracy_std']:.4f}"
-        )
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    log_path.write_text(json.dumps(log, indent=2))
 
 
 def main():
-    samples = load_samples("data/normal/samples.jsonl")
+    sample_paths = [
+        "data/samples.jsonl",
+        "data/normal/normal_samples.jsonl",
+        "data/competitive_programming/comp_samples.jsonl",
+    ]
 
-    ablation_results_problem = run_ablation_cv(samples, group_mode="problem")
-    print_ablation_results(ablation_results_problem)
-    ablation_results_author = run_ablation_cv(samples, group_mode="author_like")
-    print_ablation_results(ablation_results_author)
+    for path in sample_paths:
+        print(f"Running experiments for {path}")
 
-    ablation_results_strict = run_ablation_cv(samples, group_mode="strict")
-    print_ablation_results(ablation_results_strict)
+        samples = load_samples(path)
+
+        out_file = Path("results") / f"{Path(path).stem}_ablation.json"
+
+        run_ablation_cv(
+            samples,
+            group_mode="problem",
+            n_splits=5,
+            log_path=out_file.with_name(out_file.stem + "_problem.json"),
+        )
+
+        run_ablation_cv(
+            samples,
+            group_mode="author_like",
+            n_splits=5,
+            log_path=out_file.with_name(out_file.stem + "_author.json"),
+        )
+
+        run_ablation_cv(
+            samples,
+            group_mode="strict",
+            n_splits=5,
+            log_path=out_file.with_name(out_file.stem + "_strict.json"),
+        )
 
 
 if __name__ == "__main__":
