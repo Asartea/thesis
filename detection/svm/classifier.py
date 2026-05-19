@@ -93,7 +93,9 @@ def extract_ast_features(code: str) -> list[float]:
     - depth statistics
     """
 
-    tree = ast.parse(code)  # samples are prevalidated, so this should not raise
+    tree = ast.parse(
+        code
+    )  # samples are prevalidated (via validation.validation.py) so this should not raise. However, it turns out there are some weird edge cases that pass validation but fail here, so the caller should make sure to catch SyntaxErrors and skip those samples.
 
     nodes = list(ast.walk(tree))
     total_nodes = len(nodes) or 1

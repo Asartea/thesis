@@ -14,7 +14,9 @@ from detection.svm.classifier import (
 )
 
 from models.models import Samples
-from utils import load_samples
+from utils.utils import load_samples
+from collections import Counter
+import ast
 
 
 class AblationConfig(TypedDict):
@@ -128,6 +130,24 @@ def main():
         print(f"Running experiments for {path}")
 
         samples = load_samples(path)
+
+        # There are 19 samples which despite passing the validation check in validation.validation.py contain code that
+        # cannot be parsed by ast.parse, which causes the feature extraction to fail. This filters those out.
+        invalid = Counter()
+        valid_samples = []
+        for sample in samples:
+            try:
+                ast.parse(sample["code"])
+                valid_samples.append(sample)
+            except SyntaxError:
+                invalid["syntax"] += 1
+                print(f"Found invalid sample with label: {sample['label']}")
+                continue
+        print(
+            f"Found {invalid['syntax']} samples with invalid syntax in {path}, skipping them."
+        )
+
+        samples = valid_samples
 
         out_file = Path("results") / f"{Path(path).stem}_ablation.json"
 
