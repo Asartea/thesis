@@ -63,13 +63,26 @@ def classify_samples(
 
     results: list[dict[str, str | float]] = []
 
-    for sample in tqdm(samples):
+    for i, sample in enumerate(tqdm(samples)):
+        try:
 
-        crit, _ = detector.compute_crit(sample["code"])
+            crit, _ = detector.compute_crit(sample["code"])
 
-        crit = float(crit)
+            crit = float(crit)
 
-        is_ai = crit > threshold
+            is_ai = crit > threshold
+        except torch.OutOfMemoryError:
+            print(f"OOM at sample {sample[]}")
+            print(f"Code length chars: {len(sample['code'])}")
+
+            torch.cuda.empty_cache()
+
+            ntokens = len(detector.scoring_tokenizer.encode(sample["code"]))
+
+            print(f"Token count: {ntokens}")
+            torch.cuda.empty_cache()
+
+            continue
 
         results.append(
             {
