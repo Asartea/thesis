@@ -72,7 +72,7 @@ def classify_samples(
 
             is_ai = crit > threshold
         except torch.OutOfMemoryError:
-            print(f"OOM at sample {sample[]}")
+            print(f"OOM at sample {sample['code']}")
             print(f"Code length chars: {len(sample['code'])}")
 
             torch.cuda.empty_cache()
@@ -141,20 +141,27 @@ def evaluate(results):
 
 
 def main():
-    samples_path = Path("data") / "samples.jsonl"
-    samples = load_samples(samples_path)
-    detector = FastDetectGPT(
-        scoring_model_name=SCORING_MODEL,
-        sampling_model_name=SAMPLING_MODEL,
-        cache_dir=CACHE_DIR,
-        extra_distrib_params={},
-    )
-    calibration_samples, test_samples = split_calibration_samples(samples)
-    threshold, human_scores = calibrate_threshold(
-        detector, calibration_samples, percentile=95
-    )
-    results = classify_samples(detector, test_samples, threshold)
-    evaluate(results)
+    base_dir = Path("data")
+    paths = [
+        base_dir / "normal" / "normal_samples.jsonl",
+        base_dir / "competitive_programming" / "comp_samples.jsonl",
+    ]
+
+    for path in paths:
+        samples_path = path
+        samples = load_samples(samples_path)
+        detector = FastDetectGPT(
+            scoring_model_name=SCORING_MODEL,
+            sampling_model_name=SAMPLING_MODEL,
+            cache_dir=CACHE_DIR,
+            extra_distrib_params={},
+        )
+        calibration_samples, test_samples = split_calibration_samples(samples)
+        threshold, human_scores = calibrate_threshold(
+            detector, calibration_samples, percentile=95
+        )
+        results = classify_samples(detector, test_samples, threshold)
+        evaluate(results)
 
 
 if __name__ == "__main__":
