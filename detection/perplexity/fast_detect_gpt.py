@@ -12,11 +12,12 @@ from sklearn.metrics import (
     roc_auc_score,
     confusion_matrix,
 )
+import argparse
 
 from fast_detect_gpt.scripts.local_infer import FastDetectGPT
 
 from utils.utils import load_samples
-from models.models import Samples
+from models.models import HumanSample, Samples
 
 SCORING_MODEL = "bigcode/starcoder2-15b"
 SAMPLING_MODEL = "bigcode/starcoder2-15b"
@@ -94,13 +95,13 @@ def classify_samples(
     return results
 
 
-def split_calibration_samples(samples: Samples, n: int = 300):
+def split_calibration_samples(samples: list[HumanSample], n: int = 300):
     rng = random.Random(227)  # fixed seed for reproducibility
     shuffled = samples.copy()
     rng.shuffle(shuffled)
 
-    calibration_samples = [s for s in shuffled if s["label"] == "human"][:300]
-    test_samples = [s for s in shuffled if s not in calibration_samples]
+    calibration_samples = shuffled[:n]
+    test_samples = shuffled[n:]
     return calibration_samples, test_samples
 
 
@@ -131,37 +132,100 @@ def evaluate(results):
 
     cm = confusion_matrix(y_true, y_pred)
 
-    print(f"Accuracy : {acc:.4f}")
-    print(f"Precision: {prec:.4f}")
-    print(f"Recall   : {rec:.4f}")
-    print(f"F1       : {f1:.4f}")
-    print(f"AUROC    : {auc:.4f if auc else 'N/A'}")
-    print("\nConfusion matrix:")
-    print(cm)
+    return {
+        "accuracy": acc,
+        "precision": prec,
+        "recall": rec,
+        "f1_score": f1,
+        "auroc": auc,
+        "confusion_matrix": cm.tolist(),
+    }
+
+
+def write_results(
+    output_path: Path,
+    model_name: str,
+    dataset_name: str,
+    threshold: float,
+    metrics: dict[str, float | str | None],
+):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(output_path, "w") as f:
+        f.write(f"Model: {model_name}\n")
+        f.write(f"Dataset: {dataset_name}\n")
+        f.write(f"Threshold: {threshold:.6f}\n\n")
+
+        f.write("=== METRICS ===\n")
+        f.write(f"Accuracy : {metrics['accuracy']:.4f}\n")
+        f.write(f"Precision: {metrics['precision']:.4f}\n")
+        f.write(f"Recall   : {metrics['recall']:.4f}\n")
+        f.write(f"F1       : {metrics['f1']:.4f}\n")
+
+        if metrics["auroc"] is not None:
+            f.write(f"AUROC    : {metrics['auroc']:.4f}\n")
+        else:
+            f.write("AUROC    : N/A\n")
+
+        f.write("\nConfusion Matrix:\n")
+        f.write(str(metrics["confusion_matrix"]))
+        f.write("\n")
+
+
+def run(model_name: str):
+    base_dir = Path("data")
+    human_samples_path = (
+        base_dir / "normal" / "human_samples.jsonl"
+    )  # identical between normal and comp
+
+    normal_machine_samples_path = base_dir / "normal" / "machine_samples.jsonl"
+    comp_machine_samples_path = (
+        base_dir / "competitive_programming" / "machine_samples.jsonl"
+    )
+    normal_machine_samples = load_samples(normal_machine_samples_path)
+    comp_machine_samples = load_samples(comp_machine_samples_path)
+    human_samples = load_samples(human_samples_path)
+
+    calibration_samples, human_test_samples = split_calibration_samples(human_samples)
+
+    detector = FastDetectGPT(
+        scoring_model_name=model_name,
+        sampling_model_name=model_name,
+        cache_dir=CACHE_DIR,
+        extra_distrib_params={},
+    )
+
+    threshold, _ = calibrate_threshold(detector, calibration_samples, percentile=95)
+
+    samples = {
+        "Normal": normal_machine_samples + human_test_samples,
+        "Competitive Programming": comp_machine_samples + human_test_samples,
+    }
+    for name, sample_set in samples.items():
+        print(f"\n=== CLASSIFYING SAMPLE SET {name} ===")
+        results = classify_samples(detector, sample_set, threshold)
+        metrics = evaluate(results)
+        write_results(
+            output_path=Path(
+                f"results/perplexity_{model_name.replace('/', '_')}_{name}.txt"
+            ),
+            model_name=model_name,
+            dataset_name=name,
+            threshold=threshold,
+            metrics=metrics,
+        )
+
+
+def parse_args() -> argparse.Namespace:
+
+    parser = argparse.ArgumentParser(description="Run FastDetectGPT on AoC samples")
+    parser.add_argument("--model", type=str, default=SCORING_MODEL)
+    return parser.parse_args()
 
 
 def main():
-    base_dir = Path("data")
-    paths = [
-        base_dir / "normal" / "normal_samples.jsonl",
-        base_dir / "competitive_programming" / "comp_samples.jsonl",
-    ]
-
-    for path in paths:
-        samples_path = path
-        samples = load_samples(samples_path)
-        detector = FastDetectGPT(
-            scoring_model_name=SCORING_MODEL,
-            sampling_model_name=SAMPLING_MODEL,
-            cache_dir=CACHE_DIR,
-            extra_distrib_params={},
-        )
-        calibration_samples, test_samples = split_calibration_samples(samples)
-        threshold, human_scores = calibrate_threshold(
-            detector, calibration_samples, percentile=95
-        )
-        results = classify_samples(detector, test_samples, threshold)
-        evaluate(results)
+    args = parse_args()
+    run(args.model)
 
 
 if __name__ == "__main__":

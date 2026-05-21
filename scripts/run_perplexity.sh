@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=aoc_generation
+#SBATCH --job-name=aoc_perplexity
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 #SBATCH --gres=gpu:a100:2
@@ -19,6 +19,8 @@ module load uv
 cd ~/scriptie/habrok
 
 source .env
-uv run python3 -m detection.perplexity.fast_detect_gpt
+uv run python3 -m detection.perplexity.fast_detect_gpt \
+    "$@"
+
 
 echo "Finished at $(date)"
