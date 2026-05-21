@@ -1,23 +1,23 @@
-import numpy as np
-import torch
-from tqdm import tqdm
-from pathlib import Path
+import argparse
 import random
 from os import environ
+from pathlib import Path
+
+import numpy as np
+import torch
+from fast_detect_gpt.scripts.local_infer import FastDetectGPT
 from sklearn.metrics import (
     accuracy_score,
+    confusion_matrix,
+    f1_score,
     precision_score,
     recall_score,
-    f1_score,
     roc_auc_score,
-    confusion_matrix,
 )
-import argparse
+from tqdm import tqdm
 
-from fast_detect_gpt.scripts.local_infer import FastDetectGPT
-
-from utils.utils import load_samples
 from models.models import HumanSample, Samples
+from utils.utils import load_samples
 
 SCORING_MODEL = "bigcode/starcoder2-15b"
 SAMPLING_MODEL = "bigcode/starcoder2-15b"
@@ -167,7 +167,7 @@ def write_results(
         f.write(f"Accuracy : {metrics['accuracy']:.4f}\n")
         f.write(f"Precision: {metrics['precision']:.4f}\n")
         f.write(f"Recall   : {metrics['recall']:.4f}\n")
-        f.write(f"F1       : {metrics['f1']:.4f}\n")
+        f.write(f"F1       : {metrics['f1_score']:.4f}\n")
 
         if metrics["auroc"] is not None:
             f.write(f"AUROC    : {metrics['auroc']:.4f}\n")
