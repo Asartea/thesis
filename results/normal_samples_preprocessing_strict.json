@@ -1,0 +1,81 @@
+{
+  "group_mode": "strict",
+  "n_splits": 1,
+  "ablation_runs": [
+    {
+      "name": "baseline",
+      "accuracy": 0.9973913043478261,
+      "f1_macro": 0.9971462391153838,
+      "confusion_matrix": [
+        [
+          405,
+          0
+        ],
+        [
+          3,
+          742
+        ]
+      ]
+    },
+    {
+      "name": "no_comments",
+      "accuracy": 0.9965217391304347,
+      "f1_macro": 0.9961971025228091,
+      "confusion_matrix": [
+        [
+          405,
+          0
+        ],
+        [
+          4,
+          741
+        ]
+      ]
+    },
+    {
+      "name": "no_docstrings",
+      "accuracy": 0.9930434782608696,
+      "f1_macro": 0.9923942050456183,
+      "confusion_matrix": [
+        [
+          403,
+          2
+        ],
+        [
+          6,
+          739
+        ]
+      ]
+    },
+    {
+      "name": "normalized_identifiers",
+      "accuracy": 0.9886956521739131,
+      "f1_macro": 0.9876474355001963,
+      "confusion_matrix": [
+        [
+          401,
+          4
+        ],
+        [
+          9,
+          736
+        ]
+      ]
+    },
+    {
+      "name": "fully_normalized",
+      "accuracy": 0.9878260869565217,
+      "f1_macro": 0.9866898588298318,
+      "confusion_matrix": [
+        [
+          400,
+          5
+        ],
+        [
+          9,
+          736
+        ]
+      ]
+    }
+  ]
+}

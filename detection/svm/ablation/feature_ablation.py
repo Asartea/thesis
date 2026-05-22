@@ -47,7 +47,7 @@ def run_ablation_cv(
     labels = np.array([get_label(s) for s in samples])
     groups = np.array([build_group_id(s, mode=group_mode) for s in samples])
 
-    gkf = GroupKFold(n_splits=n_splits)
+    gkf = GroupKFold(n_splits=n_splits, random_state=6411)
 
     log = {"group_mode": group_mode, "n_splits": n_splits, "ablation_runs": []}
 
@@ -121,7 +121,6 @@ def run_ablation_cv(
 
 def main():
     sample_paths = [
-        "data/samples.jsonl",
         "data/normal/normal_samples.jsonl",
         "data/competitive_programming/comp_samples.jsonl",
     ]

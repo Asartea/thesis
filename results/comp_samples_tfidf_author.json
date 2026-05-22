@@ -1,0 +1,96 @@
+{
+  "group_mode": "author_like",
+  "n_splits": 1,
+  "ablation_runs": [
+    {
+      "tfidf_set": "char_3_5_standard",
+      "accuracy": 0.9962511715089035,
+      "f1_macro": 0.9958247245179064,
+      "confusion_matrix": [
+        [
+          361,
+          4
+        ],
+        [
+          0,
+          702
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_3_5_no_idf",
+      "accuracy": 0.9990627928772259,
+      "f1_macro": 0.9989596262845007,
+      "confusion_matrix": [
+        [
+          365,
+          0
+        ],
+        [
+          1,
+          701
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_3_5_linear_tf",
+      "accuracy": 0.9831302717900656,
+      "f1_macro": 0.9810569298141791,
+      "confusion_matrix": [
+        [
+          348,
+          17
+        ],
+        [
+          1,
+          701
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "word_unigram",
+      "accuracy": 0.9878163074039362,
+      "f1_macro": 0.9863846018691111,
+      "confusion_matrix": [
+        [
+          354,
+          11
+        ],
+        [
+          2,
+          700
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_4_6",
+      "accuracy": 0.993439550140581,
+      "f1_macro": 0.9926883825652824,
+      "confusion_matrix": [
+        [
+          359,
+          6
+        ],
+        [
+          1,
+          701
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_high_min_df",
+      "accuracy": 0.9962511715089035,
+      "f1_macro": 0.9958247245179064,
+      "confusion_matrix": [
+        [
+          361,
+          4
+        ],
+        [
+          0,
+          702
+        ]
+      ]
+    }
+  ]
+}

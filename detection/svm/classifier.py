@@ -282,7 +282,7 @@ def split_samples(
     samples: Samples,
     *,
     test_size: float = 0.2,
-    random_state: int = 2912662,
+    random_state: int = 74339,
     group_mode: str = "problem",
 ):
     labels = np.array([get_label(s) for s in samples])
@@ -320,9 +320,7 @@ def train_model(
     """
 
     model = LinearSVC(
-        C=1.0,
-        class_weight="balanced",
-        max_iter=10_000,
+        C=1.0, class_weight="balanced", max_iter=10_000, random_state=63813
     )
 
     model.fit(X_train, y_train)

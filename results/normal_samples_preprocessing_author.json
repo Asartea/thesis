@@ -1,0 +1,81 @@
+{
+  "group_mode": "author_like",
+  "n_splits": 1,
+  "ablation_runs": [
+    {
+      "name": "baseline",
+      "accuracy": 0.9924170616113744,
+      "f1_macro": 0.9916540092399215,
+      "confusion_matrix": [
+        [
+          364,
+          5
+        ],
+        [
+          3,
+          683
+        ]
+      ]
+    },
+    {
+      "name": "no_comments",
+      "accuracy": 0.9924170616113744,
+      "f1_macro": 0.9916540092399215,
+      "confusion_matrix": [
+        [
+          364,
+          5
+        ],
+        [
+          3,
+          683
+        ]
+      ]
+    },
+    {
+      "name": "no_docstrings",
+      "accuracy": 0.9895734597156398,
+      "f1_macro": 0.98854583983521,
+      "confusion_matrix": [
+        [
+          364,
+          5
+        ],
+        [
+          6,
+          680
+        ]
+      ]
+    },
+    {
+      "name": "normalized_identifiers",
+      "accuracy": 0.9838862559241706,
+      "f1_macro": 0.9822981161089611,
+      "confusion_matrix": [
+        [
+          361,
+          8
+        ],
+        [
+          9,
+          677
+        ]
+      ]
+    },
+    {
+      "name": "fully_normalized",
+      "accuracy": 0.9848341232227488,
+      "f1_macro": 0.983349773130795,
+      "confusion_matrix": [
+        [
+          362,
+          7
+        ],
+        [
+          9,
+          677
+        ]
+      ]
+    }
+  ]
+}

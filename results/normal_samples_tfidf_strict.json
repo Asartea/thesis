@@ -1,0 +1,96 @@
+{
+  "group_mode": "strict",
+  "n_splits": 1,
+  "ablation_runs": [
+    {
+      "tfidf_set": "char_3_5_standard",
+      "accuracy": 0.9973913043478261,
+      "f1_macro": 0.9971462391153838,
+      "confusion_matrix": [
+        [
+          405,
+          0
+        ],
+        [
+          3,
+          742
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_3_5_no_idf",
+      "accuracy": 0.9947826086956522,
+      "f1_macro": 0.9942892896869537,
+      "confusion_matrix": [
+        [
+          403,
+          2
+        ],
+        [
+          4,
+          741
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_3_5_linear_tf",
+      "accuracy": 0.9939130434782608,
+      "f1_macro": 0.9933337694676705,
+      "confusion_matrix": [
+        [
+          402,
+          3
+        ],
+        [
+          4,
+          741
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "word_unigram",
+      "accuracy": 0.991304347826087,
+      "f1_macro": 0.9904821494782563,
+      "confusion_matrix": [
+        [
+          401,
+          4
+        ],
+        [
+          6,
+          739
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_4_6",
+      "accuracy": 0.9965217391304347,
+      "f1_macro": 0.9961928597913026,
+      "confusion_matrix": [
+        [
+          404,
+          1
+        ],
+        [
+          3,
+          742
+        ]
+      ]
+    },
+    {
+      "tfidf_set": "char_high_min_df",
+      "accuracy": 0.9982608695652174,
+      "f1_macro": 0.9980964298956512,
+      "confusion_matrix": [
+        [
+          405,
+          0
+        ],
+        [
+          2,
+          743
+        ]
+      ]
+    }
+  ]
+}

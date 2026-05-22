@@ -1,0 +1,81 @@
+{
+  "group_mode": "problem",
+  "n_splits": 1,
+  "ablation_runs": [
+    {
+      "name": "baseline",
+      "accuracy": 0.9810834049871023,
+      "f1_macro": 0.9775570853157061,
+      "confusion_matrix": [
+        [
+          340,
+          1
+        ],
+        [
+          21,
+          801
+        ]
+      ]
+    },
+    {
+      "name": "no_comments",
+      "accuracy": 0.9793637145313844,
+      "f1_macro": 0.9755954254537824,
+      "confusion_matrix": [
+        [
+          341,
+          0
+        ],
+        [
+          24,
+          798
+        ]
+      ]
+    },
+    {
+      "name": "no_docstrings",
+      "accuracy": 0.9681857265692175,
+      "f1_macro": 0.9627576847813764,
+      "confusion_matrix": [
+        [
+          341,
+          0
+        ],
+        [
+          37,
+          785
+        ]
+      ]
+    },
+    {
+      "name": "normalized_identifiers",
+      "accuracy": 0.9914015477214101,
+      "f1_macro": 0.9896625897745858,
+      "confusion_matrix": [
+        [
+          338,
+          3
+        ],
+        [
+          7,
+          815
+        ]
+      ]
+    },
+    {
+      "name": "fully_normalized",
+      "accuracy": 0.9905417024935511,
+      "f1_macro": 0.9886191880507257,
+      "confusion_matrix": [
+        [
+          337,
+          4
+        ],
+        [
+          7,
+          815
+        ]
+      ]
+    }
+  ]
+}
